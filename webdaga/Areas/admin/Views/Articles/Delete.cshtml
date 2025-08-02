@@ -1,0 +1,14 @@
+﻿@model webdaga.Models.articlesModel
+
+<h2>Xóa bài viết</h2>
+
+<p>Bạn có chắc muốn xóa "<strong>@Model.Name</strong>" không?</p>
+
+
+<form action="/admin/articles/DeleteConfirmed" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Xóa" class="btn btn-danger" />
+    <a href="/admin/articles/Index"  class="btn btn-secondary">Hủy</a>
+</form>

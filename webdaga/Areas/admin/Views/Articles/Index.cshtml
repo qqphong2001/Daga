@@ -1,0 +1,35 @@
+﻿@model List<webdaga.Models.articlesModel>
+
+<h2>Danh sách bài viết</h2>
+
+<form asp-action="Index" method="get">
+    <input type="text" name="searchString" placeholder="Tìm theo tên..." />
+    <input type="submit" value="Tìm" />
+</form>
+
+<a href="/admin/articles/Create"  class="btn btn-success">Thêm bài viết mới</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Ảnh</th>
+            <th>Tên</th>
+            <th>Ngày tạo</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@item.ImgUrl" width="100" /></td>
+                <td>@item.Name</td>
+                <td>@item.CreatedDate?.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a href="/admin/articles/Edit?id=@item.Id" class="btn btn-warning btn-sm">Sửa</a>
+                    <a href="/admin/articles/Delete?id=@item.Id" class="btn btn-danger btn-sm">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
