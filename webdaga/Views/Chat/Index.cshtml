@@ -1,0 +1,126 @@
+﻿@{
+    ViewData["Title"] = "Chat";
+}
+
+<style>
+    body {
+        background-color: #111;
+        color: #fff;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .chat-wrapper {
+        max-width: 450px;
+        margin: 30px auto;
+        border: 1px solid #333;
+        border-radius: 10px;
+        background: #1e1e1e;
+        overflow: hidden;
+    }
+
+    .chat-header, .chat-input {
+        padding: 10px;
+        border-bottom: 1px solid #333;
+    }
+
+    .chat-input {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+        .chat-input input {
+            padding: 8px;
+            background: #2c2c2c;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+            .chat-input input::placeholder {
+                color: #aaa;
+            }
+
+    .chat-box {
+        height: 400px;
+        overflow-y: scroll;
+        padding: 10px;
+        scrollbar-width: thin;
+    }
+
+    .chat-message {
+        margin-bottom: 8px;
+        padding: 4px 6px;
+        border-radius: 4px;
+    }
+
+    .username {
+        font-weight: bold;
+        color: #6ce39e;
+    }
+
+    .timestamp {
+        color: #aaa;
+        font-size: 0.8em;
+        margin-left: 10px;
+    }
+
+    .btn-send {
+        background: #007bff;
+        border: none;
+        padding: 8px;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+
+<div style="text-align: right; padding: 5px 10px; font-size: 0.9em; color: #ccc;">
+    👁️ <span id="viewerCount">0</span> đang xem
+</div>
+
+<div class="chat-wrapper">
+    <div class="chat-box" id="chatBox">
+        <!-- messages append here -->
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="username" placeholder="Tên hiển thị" />
+        <input type="text" id="message" placeholder="Nội dung" />
+        <button class="btn-send" onclick="sendMessage()">Gửi</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+
+        const connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
+        connection.on("UpdateViewerCount", function (count) {
+            document.getElementById("viewerCount").innerText = count;
+        });
+
+        connection.on("ReceiveMessage", (user, message) => {
+            const container = document.getElementById("chatBox");
+            const div = document.createElement("div");
+            div.classList.add("chat-message");
+
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            div.innerHTML = `<span class="username">${user}:</span> ${message} <span class="timestamp">${time}</span>`;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        });
+
+        connection.start().catch(err => console.error(err.toString()));
+
+        function sendMessage() {
+            const user = document.getElementById("username").value;
+            const message = document.getElementById("message").value;
+            if (user && message) {
+                connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
+                document.getElementById("message").value = "";
+            }
+        }
+    </script>
+}

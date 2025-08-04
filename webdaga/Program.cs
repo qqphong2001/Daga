@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using webdaga.Areas.admin.Models;
 using webdaga.DbContext;
+using webdaga.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSignalR();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
 
     builder.Configuration.GetConnectionString("defaulConnectSql")
@@ -34,7 +36,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.MapHub<ChatHub>("/chathub");
+app.MapDefaultControllerRoute();
 app.UseAuthentication();  
 app.UseAuthorization();
 app.MapRazorPages();

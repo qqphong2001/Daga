@@ -29,6 +29,8 @@ public class ApplicationDbContext : IdentityDbContext<UserModel>
 
 
     public DbSet<articlesModel> Articles { get; set; }
- 
+    public DbSet<ChatMessageModel> ChatMessages { get; set; }
+
+
 
 }

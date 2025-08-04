@@ -294,3 +294,8 @@ C:\Users\qqpho\source\repos\webdaga\webdaga\bin\Debug\net8.0\runtimes\win-arm\na
 C:\Users\qqpho\source\repos\webdaga\webdaga\bin\Debug\net8.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\qqpho\source\repos\webdaga\webdaga\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\qqpho\source\repos\webdaga\webdaga\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\qqpho\source\repos\WebDaGa\webdaga\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\qqpho\source\repos\WebDaGa\webdaga\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\qqpho\source\repos\WebDaGa\webdaga\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+C:\Users\qqpho\source\repos\WebDaGa\webdaga\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
+C:\Users\qqpho\source\repos\WebDaGa\webdaga\obj\Debug\net8.0\webdaga.sourcelink.json
