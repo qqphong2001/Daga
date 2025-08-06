@@ -2,7 +2,258 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="live-stream-section">
+    <div class="container">
+        <h1 class="live-title">Xổ gà Server HD1 trực tiếp 18h ngày 4/8/25</h1>
+
+        <div class="stream-controls">
+            <button class="stream-btn active">HD1</button>
+            <button class="stream-btn">HD2</button>
+            <button class="stream-btn">HD3</button>
+            <button class="stream-btn">HD4</button>
+        </div>
+
+        <div class="stream-container">
+            <div class="stream-left">
+                <div class="video-player">
+                    <div class="video-container">
+                        <div class="live-badge">LIVE</div>
+                    
+                        <iframe src="https://www.youtube.com/embed/OZfu1yKS7TY?autoplay=0&rel=0&modestbranding=1"
+                                frameborder="0"
+                                allowfullscreen
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                        </iframe>
+                        <div class="video-info">
+                            <h3>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h3>
+                            <p class="phone-number">0393.835.679</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stream-right">
+                <div class="live-chat">
+                    <div class="chat-header">
+                        <h3>Live Chat</h3>
+                        <div class="viewer-count"><i class="fas fa-eye"></i> <span id="viewerCount">0</span></div>
+                    </div>
+                    <div class="chat-messages" id="chatBox">
+
+                    </div>
+                    @*<form class="chat-input" autocomplete="off">*@
+                <div class="chat-input">
+                    <input type="text" id="username" class="chat-name" placeholder="Tên của bạn..." required>
+                    <input type="text" id="message" class="chat-message" placeholder="Nhập nội dung chat..." required>
+                    <button onclick="sendMessage()" ><i class="fas fa-paper-plane"></i> Gửi</button>
+                </div>
+                     
+                    @*</form>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-info">
+            <h2>Kết Nối Đam Mê</h2>
+            <div class="contact-details">
+                <p><i class="fas fa-phone"></i> 0393.835.679</p>
+                <p><i class="fas fa-map-marker-alt"></i> Phước Lâm, Hoà Hiệp Bắc, Đồng Hoà, Phú Yên</p>
+            </div>
+            <div class="social-buttons">
+                <button class="social-btn zalo">
+                    <i class="fab fa-whatsapp"></i>
+                    AE KẾT BẠN ZALO
+                </button>
+                <button class="social-btn vip">
+                    <i class="fas fa-crown"></i>
+                    NHÓM VIP ZALO
+                </button>
+                <button class="social-btn facebook">
+                    <i class="fab fa-facebook"></i>
+                    AE KẾT BẠN FACEBOOK
+                </button>
+            </div>
+        </div>
+
+        <div class="info-panels">
+            <div class="panel bank-info">
+                <h3>Thông Tin Chuyển Khoản</h3>
+                <div class="bank-details">
+                    <p><strong>Ngân Hàng VietinBank</strong></p>
+                    <p>Tên người nhận: Lê Duy Thanh</p>
+                    <p>Số tài khoản: 0300000000</p>
+                    <button class="copy-btn">Sao chép STK</button>
+                </div>
+            </div>
+
+            <div class="panel regulations">
+                <h3>Quy định</h3>
+                <ul class="rules-list">
+                    <li>Xổ Gà Mua Bán Trên Tinh Thần Giao Lưu Vui Vẻ, Lịch Sự Tránh Lừa Đảo</li>
+                    <li>Không Có Số Điện Thoại, Không Cá Cược Dưới Mọi Hình Thức</li>
+                    <li>Website hoạt động vì mục đích giải trí</li>
+                    <li>Tuân thủ pháp luật Việt Nam</li>
+                </ul>
+                <button class="chat-btn">Chat Ngay</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Replay Section -->
+<section class="replay-section">
+    <div class="container">
+        <h2>VIDEO XEM LẠI</h2>
+        <p class="replay-desc">Video xổ gà được cập nhật hàng ngày</p>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h4>
+                    <p class="video-date">03/08/2025</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h4>
+                    <p class="video-date">02/08/2025</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <div class="play-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="video-info">
+                    <h4>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h4>
+                    <p class="video-date">01/08/2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
+    <div class="container">
+        <div class="about-header">
+            <h2>CLB GÀ CHỌI</h2>
+        </div>
+
+        <div class="about-content">
+            <div class="about-text">
+                <p>Chào mừng bạn đến với gachoicauthanh.com - nơi kết nối những người đam mê gà chọi. Chúng tôi cung cấp thông tin về cách nuôi, chăm sóc và huấn luyện gà chọi một cách chuyên nghiệp.</p>
+                <p>CLB Gà Chọi hoạt động với mục đích giải trí và giao lưu, không khuyến khích các hoạt động cá cược. Chúng tôi cam kết tuân thủ pháp luật Việt Nam và tạo môi trường lành mạnh cho cộng đồng yêu thích gà chọi.</p>
+            </div>
+
+            <div class="about-images">
+                <div class="image-collage">
+                    <div class="small-image"></div>
+                    <div class="small-image"></div>
+                    <div class="small-image"></div>
+                    <div class="small-image"></div>
+                </div>
+                <div class="main-image" > 
+                    <h3>CLB Gà Chọi Cậu Thanh LIVE XỔ GÀ 18H30 HÀNG NGÀY</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const chatMessages = document.querySelector('.chat-messages');
+
+        function addMessage(username, message, timestamp = new Date()) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+
+            const timeLabel = timeAgo(new Date(timestamp));
+            const isoTime = new Date(timestamp).toISOString();
+
+            messageDiv.innerHTML = `
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div>
+                        <span class="username">${username}:</span>
+                        <span class="message-text">${message}</span>
+                    </div>
+                    <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 100px;">
+                        ${timeLabel}
+                    </span>
+                </div>
+            `;
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        const connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
+        connection.on("UpdateViewerCount", function (count) {
+            document.getElementById("viewerCount").innerText = count;
+        });
+
+        connection.on("ReceiveMessage", (user, message, timestamp) => {
+            const time = timestamp ? new Date(timestamp) : new Date(); 
+            addMessage(user, message, time);
+        });
+
+
+        connection.start().catch(err => console.error(err.toString()));
+
+        function sendMessage() {
+            const user = document.getElementById("username").value;
+            const message = document.getElementById("message").value;
+            if (user && message) {
+                connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
+                document.getElementById("message").value = "";
+            }
+        }
+
+        function timeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+
+            if (seconds < 60) return `${seconds} giây trước`;
+
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `${minutes} phút trước`;
+
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours} giờ trước`;
+
+            const days = Math.floor(hours / 24);
+            return `${days} ngày trước`;
+        }
+
+        setInterval(() => {
+            const timeSpans = document.querySelectorAll(".message-time");
+
+            timeSpans.forEach(span => {
+                const timestamp = span.getAttribute("data-timestamp");
+                if (timestamp) {
+                    const time = new Date(timestamp);
+                    span.textContent = `(${timeAgo(time)})`;
+                }
+            });
+        }, 5000); 
+
+
+    </script>
+}

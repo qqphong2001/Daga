@@ -1,46 +1,62 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - webdaga</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/webdaga.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLB GÀ CHỌI - Trang Chủ</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">webdaga</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <img src="https://www.svgrepo.com/show/15495/rooster.svg" alt="Logo Gà Chọi" class="logo">
+                CLB GÀ CHỌI
             </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active">Trang Chủ</a></li>
+                <li><a href="#" class="nav-link">Video Xổ Gà</a></li>
+                <li><a href="#" class="nav-link">Liên Lạc</a></li>
+                <li><a href="#" class="nav-link">Đăng Nhập</a></li>
+            </ul>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Live Stream Section -->
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            &copy; 2025 - webdaga - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>CLB Gà Chọi Cậu Thanh</h3>
+                    <p>Vẫn xổ gà trực tiếp 18h hàng ngày</p>
+                    <p>Giá bán mua bán gà chọi đủ các tỉnh</p>
+                    <p><i class="fas fa-phone"></i> 0393.835.679</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Phước Lâm, Hoà Hiệp Bắc, Đồng Hoà, Phú Yên</p>
+                </div>
+
+                <div class="footer-rules">
+                    <h3>Quy Định</h3>
+                    <p>Website CLB Gà Chọi Thanh hoạt động với hình thức giải trí, vui lòng không cá độ dưới mọi hình thức vi phạm pháp luật Việt Nam</p>
+                    <p>Xổ Gà Mua Bán Trên Tinh Thần Giao Lưu Vui Vẻ, Lịch Sự Tránh Lừa Đảo</p>
+                    <p>Chính sách bảo mật</p>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <p>Bản quyền thuộc về CLB Gà Chọi Cậu Thanh © 2025</p>
+            </div>
         </div>
     </footer>
+
+    <script src="~/js/script.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

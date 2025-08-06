@@ -23,8 +23,8 @@ public class ChatHub : Hub
         var messages = _context.ChatMessages.OrderBy(m => m.Timestamp).Take(50).ToList();
         foreach (var msg in messages)
         {
-            await Clients.Caller.SendAsync("ReceiveMessage", msg.User, msg.Message);
-        }
+                await Clients.Caller.SendAsync("ReceiveMessage", msg.User, msg.Message, msg.Timestamp);
+            }
 
         await base.OnConnectedAsync();
     }
