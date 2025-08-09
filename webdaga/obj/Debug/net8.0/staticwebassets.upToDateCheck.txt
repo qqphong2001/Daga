@@ -79,6 +79,7 @@ wwwroot\admin\widgets\cards.html
 wwwroot\admin\widgets\info-box.html
 wwwroot\admin\widgets\small-box.html
 wwwroot\css\site.css
+wwwroot\css\style.css
 wwwroot\favicon.ico
 wwwroot\js\script.js
 wwwroot\js\site.js
@@ -139,4 +140,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\css\style.css

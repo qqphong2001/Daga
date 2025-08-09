@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N6as8oqsJqQ=",
+  "dgSpecHash": "t+xy6JqDtp0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\webdaga.csproj",
+  "projectFilePath": "C:\\Users\\qqpho\\source\\repos\\WebDaGa\\webdaga\\webdaga.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\qqpho\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\qqpho\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

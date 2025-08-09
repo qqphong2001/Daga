@@ -196,7 +196,7 @@
                         <span class="username">${username}:</span>
                         <span class="message-text">${message}</span>
                     </div>
-                    <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 100px;">
+                    <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 120px;">
                         ${timeLabel}
                     </span>
                 </div>
@@ -249,7 +249,7 @@
                 const timestamp = span.getAttribute("data-timestamp");
                 if (timestamp) {
                     const time = new Date(timestamp);
-                    span.textContent = `(${timeAgo(time)})`;
+                    span.textContent = `${timeAgo(time)}`;
                 }
             });
         }, 5000); 
