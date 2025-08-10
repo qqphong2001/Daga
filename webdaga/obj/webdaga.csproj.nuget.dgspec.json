@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\qqpho\\source\\repos\\WebDaGa\\webdaga\\webdaga.csproj": {}
+    "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\webdaga.csproj": {}
   },
   "projects": {
-    "C:\\Users\\qqpho\\source\\repos\\WebDaGa\\webdaga\\webdaga.csproj": {
+    "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\webdaga.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\qqpho\\source\\repos\\WebDaGa\\webdaga\\webdaga.csproj",
+        "projectUniqueName": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\webdaga.csproj",
         "projectName": "webdaga",
-        "projectPath": "C:\\Users\\qqpho\\source\\repos\\WebDaGa\\webdaga\\webdaga.csproj",
+        "projectPath": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\webdaga.csproj",
         "packagesPath": "C:\\Users\\qqpho\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\obj\\",
         "projectStyle": "PackageReference",

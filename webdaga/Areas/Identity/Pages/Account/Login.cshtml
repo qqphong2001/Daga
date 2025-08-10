@@ -6,38 +6,102 @@
     Layout = null;
 }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-12">
-        <section>
-            <form id="account" method="post">
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                    <label asp-for="Input.Email" class="form-label">Email</label>
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
-                </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Mật khẩu</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div class="checkbox mb-3">
-                    <label asp-for="Input.RememberMe" class="form-label">
-                        <input class="form-check-input" asp-for="Input.RememberMe" />
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                    </label>
-                </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Đăng nhập</button>
-                </div>
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login - Vàng Đen</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --card: #1a1a1a;
+            --accent: #facc15;
+            --muted: #d1d5db;
+            --success: #84cc16;
+            --danger: #ef4444;
+            font-family: Inter, ui-sans-serif, system-ui;
+        }
 
-            </form>
-        </section>
-    </div>
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #000 0%, #1a1a1a 100%);
+            color: var(--accent);
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            height: 100vh;
+        }
 
-</div>
+        .card {
+            max-width: 420px;
+            width: 100%;
+            background: var(--card);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+        }
+
+        label {
+            color: var(--accent);
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: block
+        }
+
+        input {
+            width: 90%;
+            padding: 12px 14px;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.4);
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: #000;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .text-danger {
+            color: var(--danger);
+            font-size: 13px
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Đăng nhập</h1>
+        <form id="account" method="post">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+            <div class="text-danger" role="alert"></div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" name="Input.Email" autocomplete="username" placeholder="name@example.com" required />
+                <span class="text-danger" id="emailError"></span>
+            </div>
+            <div>
+                <label for="password">Mật khẩu</label>
+                <input id="password" type="password" name="Input.Password" autocomplete="current-password" placeholder="password" required />
+                <span class="text-danger" id="passError"></span>
+            </div>
+
+            <button id="login-submit" type="submit" class="btn">Đăng nhập</button>
+        </form>
+    </main>
+</body>
+</html>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

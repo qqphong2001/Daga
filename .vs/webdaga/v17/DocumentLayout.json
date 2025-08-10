@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\qqpho\\source\\repos\\webdaga\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|c:\\users\\qqpho\\source\\repos\\webdaga\\webdaga\\seeddata\\adminaccountinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|solutionrelative:webdaga\\seeddata\\adminaccountinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|c:\\users\\qqpho\\source\\repos\\webdaga\\webdaga\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|solutionrelative:webdaga\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|c:\\users\\qqpho\\source\\repos\\webdaga\\webdaga\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|solutionrelative:webdaga\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|c:\\users\\qqpho\\source\\repos\\webdaga\\webdaga\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|solutionrelative:webdaga\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|c:\\users\\qqpho\\source\\repos\\webdaga\\webdaga\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|solutionrelative:webdaga\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|c:\\users\\qqpho\\source\\repos\\webdaga\\webdaga\\wwwroot\\js\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|solutionrelative:webdaga\\wwwroot\\js\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|c:\\users\\qqpho\\source\\repos\\webdaga\\webdaga\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|solutionrelative:webdaga\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00AF1EF5-6B5F-4496-96D9-939EC7FAC3E7}|webdaga\\webdaga.csproj|c:\\users\\qqpho\\source\\repos\\webdaga\\webdaga\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -42,11 +54,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "script.js",
               "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\wwwroot\\js\\script.js",
               "RelativeDocumentMoniker": "webdaga\\wwwroot\\js\\script.js",
@@ -55,8 +67,7 @@
               "ViewState": "AgIAAFUAAAAAAAAAAADwv2cAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2025-08-06T13:43:56.047Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -68,7 +79,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "AdminAccountInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\SeedData\\AdminAccountInitializer.cs",
+              "RelativeDocumentMoniker": "webdaga\\SeedData\\AdminAccountInitializer.cs",
+              "ToolTip": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\SeedData\\AdminAccountInitializer.cs*",
+              "RelativeToolTip": "webdaga\\SeedData\\AdminAccountInitializer.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T00:58:20.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Program.cs",
+              "RelativeDocumentMoniker": "webdaga\\Program.cs",
+              "ToolTip": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Program.cs",
+              "RelativeToolTip": "webdaga\\Program.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAowDcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-10T00:56:07.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "webdaga\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "webdaga\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-10T00:49:25.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Areas\\admin\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "webdaga\\Areas\\admin\\Views\\Shared\\_Layout.cshtml",
@@ -76,25 +126,24 @@
               "RelativeToolTip": "webdaga\\Areas\\admin\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAEgAAAAAAAAAAAAAAFAAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-09T14:55:46.844Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-09T14:55:46.844Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "webdaga\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "webdaga\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-08-09T14:47:17.219Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "_LoginPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Views\\Shared\\_LoginPartial.cshtml",
               "RelativeDocumentMoniker": "webdaga\\Views\\Shared\\_LoginPartial.cshtml",
@@ -102,12 +151,11 @@
               "RelativeToolTip": "webdaga\\Views\\Shared\\_LoginPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-09T14:47:16.729Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-09T14:47:16.729Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "ChatHub.cs",
               "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\SignalR\\ChatHub.cs",
               "RelativeDocumentMoniker": "webdaga\\SignalR\\ChatHub.cs",
@@ -119,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "style.css",
               "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\wwwroot\\css\\style.css",
               "RelativeDocumentMoniker": "webdaga\\wwwroot\\css\\style.css",
@@ -132,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "webdaga\\Views\\Home\\Index.cshtml",
@@ -140,12 +188,11 @@
               "RelativeToolTip": "webdaga\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAL0AAAAAAAAAAAAYwM4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-06T13:39:59.579Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-06T13:39:59.579Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\Views\\Chat\\Index.cshtml",
               "RelativeDocumentMoniker": "webdaga\\Views\\Chat\\Index.cshtml",
@@ -153,8 +200,7 @@
               "RelativeToolTip": "webdaga\\Views\\Chat\\Index.cshtml",
               "ViewState": "AgIAAD8AAAAAAAAAAAAqwF8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-04T12:01:30.045Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-04T12:01:30.045Z"
             }
           ]
         }
