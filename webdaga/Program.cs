@@ -1,13 +1,17 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.PortableExecutable;
 using webdaga.Areas.admin.Models;
 using webdaga.DbContext;
+using webdaga.Helper;
 using webdaga.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<StreamOptions>(builder.Configuration.GetSection("Stream"));
 builder.Services.AddSignalR();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
 
@@ -31,6 +35,11 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+var provider = new FileExtensionContentTypeProvider();
+provider.Mappings[".m3u8"] = "application/vnd.apple.mpegurl";
+provider.Mappings[".ts"] = "video/mp2t";
+provider.Mappings[".mpd"] = "application/dash+xml";
+app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = provider });
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

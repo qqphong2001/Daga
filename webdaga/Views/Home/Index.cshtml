@@ -1,10 +1,28 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewBag.Title = "Trang chủ";
+    var isLive = (bool)(ViewBag.IsLive ?? false);
+    var hls = (string)ViewBag.HlsUrl;
 }
 
 <section class="live-stream-section">
     <div class="container">
         <h1 class="live-title">Xổ gà Server HD1 trực tiếp 18h ngày 4/8/25</h1>
+
+        @if (isLive)
+        {
+            <video id="liveVideo" controls autoplay playsinline style="width:100%;max-width:900px"></video>
+            <script src="/js/hls-player.js"></script>
+            <script>
+        window.setupHlsPlayer('liveVideo', '@hls');
+            </script>
+        }
+        else
+        {
+            <div class="placeholder">
+                Hiện chưa có livestream. Vui lòng quay lại sau.
+            </div>
+        }
+
 
         <div class="stream-controls">
             <button class="stream-btn active">HD1</button>
@@ -18,8 +36,8 @@
                 <div class="video-player">
                     <div class="video-container">
                         <div class="live-badge">LIVE</div>
-                    
-                        <iframe src="https://www.youtube.com/embed/OZfu1yKS7TY?autoplay=0&rel=0&modestbranding=1"
+
+                        <iframe src="https://www.youtube.com/embed/YvAqjwNAZEU?si=gise6ATkq_kSID3x"
                                 frameborder="0"
                                 allowfullscreen
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
@@ -41,12 +59,12 @@
 
                     </div>
                     @*<form class="chat-input" autocomplete="off">*@
-                <div class="chat-input">
-                    <input type="text" id="username" class="chat-name" placeholder="Tên của bạn..." required>
-                    <input type="text" id="message" class="chat-message" placeholder="Nhập nội dung chat..." required>
-                    <button onclick="sendMessage()" ><i class="fas fa-paper-plane"></i> Gửi</button>
-                </div>
-                     
+                    <div class="chat-input">
+                        <input type="text" id="username" class="chat-name" placeholder="Tên của bạn..." required>
+                        <input type="text" id="message" class="chat-message" placeholder="Nhập nội dung chat..." required>
+                        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Gửi</button>
+                    </div>
+
                     @*</form>*@
                 </div>
             </div>

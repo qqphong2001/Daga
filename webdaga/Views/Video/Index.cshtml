@@ -1,0 +1,28 @@
+﻿@model IEnumerable<VodItem>
+@{
+    ViewBag.Title = "Video đã lưu";
+}
+<h1>Video đã lưu</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Kích thước</th>
+            <th>Ngày tạo (UTC)</th>
+            <th>Xem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var v in Model)
+        {
+            <tr>
+                <td>@v.Name</td>
+                <td>@(Math.Round(v.SizeBytes / 1024.0 / 1024.0, 1)) MB</td>
+                <td>@v.CreatedUtc.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>
+                    <video src="@v.Url" controls preload="metadata" style="width:300px"></video>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
