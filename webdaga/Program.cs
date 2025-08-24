@@ -6,6 +6,7 @@ using webdaga.Areas.admin.Models;
 using webdaga.DbContext;
 using webdaga.Helper;
 using webdaga.SignalR;
+using webdaga.SignalR.LiveStreamApp.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +47,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.MapHub<ChatHub>("/chathub");
+app.MapHub<StreamHub>("/streamHub");
 app.MapDefaultControllerRoute();
 app.UseAuthentication();  
 app.UseAuthorization();

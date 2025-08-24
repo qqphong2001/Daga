@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "N6as8oqsJqQ=",
+  "dgSpecHash": "WAmIxK2lF5s=",
   "success": true,
   "projectFilePath": "C:\\Users\\qqpho\\source\\repos\\webdaga\\webdaga\\webdaga.csproj",
   "expectedPackageFiles": [
@@ -203,7 +203,8 @@
     "C:\\Users\\qqpho\\.nuget\\packages\\system.threading.channels\\8.0.0\\system.threading.channels.8.0.0.nupkg.sha512",
     "C:\\Users\\qqpho\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\qqpho\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\qqpho\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+    "C:\\Users\\qqpho\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\qqpho\\.nuget\\packages\\videolan.libvlc.windows\\3.0.0\\videolan.libvlc.windows.3.0.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Stream</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+</head>
+<body>
+    <h1>Admin Stream</h1>
+    <video id="preview" autoplay style="width: 100%; max-width: 800px;"></video>
+    <button id="startBtn">Start Stream</button>
+    <button id="stopBtn" disabled>Stop Stream</button>
+
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/streamHub")
+            .build();
+
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        async function startStreaming() {
+            let stream;
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: "environment" },
+                    audio: true
+                });
+            } catch (err) {
+                console.warn("Camera sau không khả dụng, thử camera mặc định...", err);
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({
+                        video: true,
+                        audio: true
+                    });
+                } catch (fallbackErr) {
+                    console.error("Lỗi khi truy cập camera:", fallbackErr);
+                    alert("Không thể truy cập camera: " + fallbackErr.message);
+                    return;
+                }
+            }
+
+            document.getElementById("preview").srcObject = stream;
+
+            // Đảm bảo SignalR đã kết nối trước khi tiếp tục
+            if (connection.state !== signalR.HubConnectionState.Connected) {
+                try {
+                    await connection.start();
+                    console.log("SignalR connected");
+                } catch (err) {
+                    console.error("Lỗi kết nối SignalR:", err);
+                    alert("Không thể kết nối SignalR: " + err.message);
+                    return;
+                }
+            }
+
+            const mimeType = MediaRecorder.isTypeSupported("video/webm; codecs=vp8,vorbis") ? "video/webm; codecs=vp8,vorbis" : "video/mp4";
+            console.log("Using mimeType:", mimeType);
+            mediaRecorder = new MediaRecorder(stream, { mimeType: mimeType });
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    console.log("Sending frame, size:", event.data.size);
+                    recordedChunks.push(event.data);
+                    event.data.arrayBuffer().then(buffer => {
+                        if (connection.state === signalR.HubConnectionState.Connected) {
+                            connection.invoke("SendFrame", Array.from(new Uint8Array(buffer)))
+                                .catch(err => console.error("Lỗi gửi frame:", err));
+                        } else {
+                            console.warn("Không thể gửi frame: SignalR không kết nối");
+                        }
+                    });
+                }
+            };
+            mediaRecorder.start(100);
+
+            document.getElementById("startBtn").disabled = true;
+            document.getElementById("stopBtn").disabled = false;
+
+            // Gửi thông báo bắt đầu stream
+            if (connection.state === signalR.HubConnectionState.Connected) {
+                await connection.invoke("NotifyStreamStarted")
+                    .catch(err => console.error("Lỗi gửi NotifyStreamStarted:", err));
+            } else {
+                console.warn("Không thể gửi NotifyStreamStarted: SignalR không kết nối");
+            }
+        }
+        async function stopStreaming() {
+            mediaRecorder.stop();
+            document.getElementById("preview").srcObject.getTracks().forEach(track => track.stop());
+            document.getElementById("startBtn").disabled = false;
+            document.getElementById("stopBtn").disabled = true;
+
+            const blob = new Blob(recordedChunks, { type: "video/mp4" });
+            const formData = new FormData();
+            formData.append("video", blob, "stream.mp4");
+
+            const response = await fetch("/Stream/SaveVideo", {
+                method: "POST",
+                body: formData
+            });
+            const result = await response.json();
+            await connection.invoke("NotifyStreamStopped", result.path);
+
+            recordedChunks = [];
+        }
+
+        document.getElementById("startBtn").addEventListener("click", startStreaming);
+        document.getElementById("stopBtn").addEventListener("click", stopStreaming);
+
+        connection.start().catch(err => console.error(err));
+    </script>
+</body>
+</html>

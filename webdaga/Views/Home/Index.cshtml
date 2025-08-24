@@ -8,20 +8,9 @@
     <div class="container">
         <h1 class="live-title">Xổ gà Server HD1 trực tiếp 18h ngày 4/8/25</h1>
 
-        @if (isLive)
-        {
-            <video id="liveVideo" controls autoplay playsinline style="width:100%;max-width:900px"></video>
-            <script src="/js/hls-player.js"></script>
-            <script>
-        window.setupHlsPlayer('liveVideo', '@hls');
-            </script>
-        }
-        else
-        {
-            <div class="placeholder">
-                Hiện chưa có livestream. Vui lòng quay lại sau.
-            </div>
-        }
+
+        <video id="player" controls autoplay></video>
+
 
 
         <div class="stream-controls">
@@ -188,7 +177,7 @@
                     <div class="small-image"></div>
                     <div class="small-image"></div>
                 </div>
-                <div class="main-image" > 
+                <div class="main-image">
                     <h3>CLB Gà Chọi Cậu Thanh LIVE XỔ GÀ 18H30 HÀNG NGÀY</h3>
                 </div>
             </div>
@@ -198,6 +187,8 @@
 
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="~/js/player.js"></script>
     <script>
         const chatMessages = document.querySelector('.chat-messages');
 
@@ -209,16 +200,16 @@
             const isoTime = new Date(timestamp).toISOString();
 
             messageDiv.innerHTML = `
-                <div style="display:flex;justify-content:space-between;align-items:center">
-                    <div>
-                        <span class="username">${username}:</span>
-                        <span class="message-text">${message}</span>
+                    <div style="display:flex;justify-content:space-between;align-items:center">
+                        <div>
+                            <span class="username">${username}:</span>
+                            <span class="message-text">${message}</span>
+                        </div>
+                        <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 120px;">
+                            ${timeLabel}
+                        </span>
                     </div>
-                    <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 120px;">
-                        ${timeLabel}
-                    </span>
-                </div>
-            `;
+                `;
 
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -229,7 +220,7 @@
         });
 
         connection.on("ReceiveMessage", (user, message, timestamp) => {
-            const time = timestamp ? new Date(timestamp) : new Date(); 
+            const time = timestamp ? new Date(timestamp) : new Date();
             addMessage(user, message, time);
         });
 
@@ -270,7 +261,7 @@
                     span.textContent = `${timeAgo(time)}`;
                 }
             });
-        }, 5000); 
+        }, 5000);
 
 
     </script>
