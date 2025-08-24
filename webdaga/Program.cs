@@ -27,6 +27,22 @@ builder.Services.AddDefaultIdentity<UserModel>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddRazorPages();
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy
+                .AllowAnyOrigin()   // Cho ph?p t?t c? domain
+                .AllowAnyHeader()   // Cho ph?p t?t c? header
+                .AllowAnyMethod();  // Cho ph?p t?t c? HTTP method
+        });
+});
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,6 +57,7 @@ provider.Mappings[".m3u8"] = "application/vnd.apple.mpegurl";
 provider.Mappings[".ts"] = "video/mp2t";
 provider.Mappings[".mpd"] = "application/dash+xml";
 app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = provider });
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

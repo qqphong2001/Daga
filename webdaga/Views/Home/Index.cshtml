@@ -9,7 +9,7 @@
         <h1 class="live-title">Xổ gà Server HD1 trực tiếp 18h ngày 4/8/25</h1>
 
 
-        <video id="player" controls autoplay></video>
+
 
 
 
@@ -26,11 +26,8 @@
                     <div class="video-container">
                         <div class="live-badge">LIVE</div>
 
-                        <iframe src="https://www.youtube.com/embed/YvAqjwNAZEU?si=gise6ATkq_kSID3x"
-                                frameborder="0"
-                                allowfullscreen
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-                        </iframe>
+                        <video style="height:100% !important" id="player" controls autoplay></video>
+
                         <div class="video-info">
                             <h3>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h3>
                             <p class="phone-number">0393.835.679</p>
@@ -188,7 +185,7 @@
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="~/js/player.js"></script>
+
     <script>
         const chatMessages = document.querySelector('.chat-messages');
 
@@ -200,16 +197,16 @@
             const isoTime = new Date(timestamp).toISOString();
 
             messageDiv.innerHTML = `
-                    <div style="display:flex;justify-content:space-between;align-items:center">
-                        <div>
-                            <span class="username">${username}:</span>
-                            <span class="message-text">${message}</span>
+                        <div style="display:flex;justify-content:space-between;align-items:center">
+                            <div>
+                                <span class="username">${username}:</span>
+                                <span class="message-text">${message}</span>
+                            </div>
+                            <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 120px;">
+                                ${timeLabel}
+                            </span>
                         </div>
-                        <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 120px;">
-                            ${timeLabel}
-                        </span>
-                    </div>
-                `;
+                    `;
 
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -265,4 +262,40 @@
 
 
     </script>
+
+    <script>
+        async function playStream() {
+            const video = document.getElementById('player');
+            const streamUrl = "http://localhost:8889/mystream";
+
+            // Lấy SDP offer từ trình duyệt
+            const pc = new RTCPeerConnection();
+            pc.ontrack = (event) => {
+                video.srcObject = event.streams[0];
+            };
+
+            // Thêm track audio/video vào peer connection
+            pc.addTransceiver("video", { direction: "recvonly" });
+            pc.addTransceiver("audio", { direction: "recvonly" });
+
+            const offer = await pc.createOffer();
+            await pc.setLocalDescription(offer);
+
+            // Gửi offer đến MediaMTX
+            const res = await fetch(streamUrl + "/whep", {
+                method: "POST",
+                body: offer.sdp,
+                headers: { "Content-Type": "application/sdp" },
+            });
+
+            const answer = await res.text();
+            await pc.setRemoteDescription({
+                type: "answer",
+                sdp: answer,
+            });
+        }
+
+        playStream();
+    </script>
+
 }

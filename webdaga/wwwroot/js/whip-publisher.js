@@ -12,16 +12,21 @@
         function log(msg, isErr) { statusEl.textContent = msg; statusEl.style.color = isErr ? '#a00' : '#0a0'; }
 
         async function getConstraints() {
-            const [w, h] = (resSel.value || '1280x720').split('x').map(Number);
             return {
-                audio: { echoCancellation: true, noiseSuppression: true },
-                video: { width: { ideal: w }, height: { ideal: h }, frameRate: { ideal: 30 } }
+                video: { facingMode: "environment" },
+                audio: true
             };
         }
 
+
         async function openMedia() {
             if (localStream) { localStream.getTracks().forEach(t => t.stop()); }
-            localStream = await navigator.mediaDevices.getUserMedia(await getConstraints());
+            try {
+                localStream = await navigator.mediaDevices.getUserMedia(await getConstraints());
+            } catch (e) {
+                log('Không mở được camera: ' + e, true)
+                localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            }
             videoEl.srcObject = localStream;
             videoEl.muted = true; // preview without echo
             await videoEl.play();

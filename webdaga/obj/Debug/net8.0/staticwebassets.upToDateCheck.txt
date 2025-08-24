@@ -84,7 +84,6 @@ wwwroot\favicon.ico
 wwwroot\js\hls-player.js
 wwwroot\js\script.js
 wwwroot\js\site.js
-wwwroot\js\whip-publisher.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
@@ -142,4 +141,6 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\videos\1af93406-072a-40da-bea3-2ebf19129923.mp4
 wwwroot\videos\c9c13a89-f6da-4ca0-b839-36fcb3f6c168.mp4
+wwwroot\js\whip-publisher.js
