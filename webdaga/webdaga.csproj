@@ -29,6 +29,7 @@
   <ItemGroup>
     <Folder Include="Areas\admin\Data\" />
     <Folder Include="wwwroot\admin\" />
+    <Folder Include="wwwroot\recordings\mystream\" />
   </ItemGroup>
 
 </Project>

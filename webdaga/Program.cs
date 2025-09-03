@@ -1,10 +1,11 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.PortableExecutable;
 using webdaga.Areas.admin.Models;
 using webdaga.DbContext;
 using webdaga.Helper;
+using webdaga.Services;
 using webdaga.SignalR;
 using webdaga.SignalR.LiveStreamApp.Hubs;
 
@@ -25,6 +26,14 @@ builder.Services.AddDefaultIdentity<UserModel>(options =>
     options.SignIn.RequireConfirmedAccount = false;
 })
     .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddHostedService<VideoCleanupService>();
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Lockout settings
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30); // khóa 15 phút
+    options.Lockout.MaxFailedAccessAttempts = 5; // số lần sai tối đa
+    options.Lockout.AllowedForNewUsers = true; // áp dụng cho user mới
+});
 
 builder.Services.AddRazorPages();
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";

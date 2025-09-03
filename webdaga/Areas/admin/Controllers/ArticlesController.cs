@@ -4,7 +4,7 @@ using System.Linq;
 using webdaga.DbContext;
 using webdaga.Models;
 
-namespace webdaga.Controllers
+namespace webdaga.admin.Controllers
 {
     [Area("admin")]
     [Authorize]
@@ -19,18 +19,33 @@ namespace webdaga.Controllers
         }
 
         // Danh sách + tìm kiếm
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString, int page = 1, int pageSize = 5)
         {
-            var articles = from a in _context.Articles
-                           select a;
+            var articles = _context.Articles
+                                   .OrderByDescending(a => a.CreatedDate)
+                                   .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
                 articles = articles.Where(s => s.Name.Contains(searchString));
             }
 
-            return View(articles.ToList());
+            var totalItems = articles.Count();
+
+            var pagedArticles = articles
+                                .Skip((page - 1) * pageSize)
+                                .Take(pageSize)
+                                .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+            ViewBag.SearchString = searchString;
+
+            return View("~/Areas/admin/Views/Articles/Index.cshtml", pagedArticles);
         }
+
+
+
 
         // GET: Create
         public IActionResult Create()

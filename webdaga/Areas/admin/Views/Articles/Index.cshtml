@@ -22,7 +22,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td><img src="@item.ImgUrl" width="100" /></td>
+                <td style="width:20%;height:20%"><img src="~/gachoi.jpg" width="100%" height="100%" /></td>
                 <td>@item.Name</td>
                 <td>@item.CreatedDate?.ToString("dd/MM/yyyy")</td>
                 <td>
@@ -33,3 +33,21 @@
         }
     </tbody>
 </table>
+<nav>
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(ViewBag.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="?searchString=@ViewBag.SearchString&page=@(ViewBag.CurrentPage - 1)">Previous</a>
+        </li>
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link" href="?searchString=@ViewBag.SearchString&page=@i">@i</a>
+            </li>
+        }
+
+        <li class="page-item @(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : "")">
+            <a class="page-link" href="?searchString=@ViewBag.SearchString&page=@(ViewBag.CurrentPage + 1)">Next</a>
+        </li>
+    </ul>
+</nav>

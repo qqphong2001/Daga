@@ -1,57 +1,63 @@
-﻿@{
+﻿@model IEnumerable<articlesModel>
+@{
     ViewBag.Title = "Trang chủ";
-    var isLive = (bool)(ViewBag.IsLive ?? false);
-    var hls = (string)ViewBag.HlsUrl;
+    var streamUrl = (string)(ViewBag.streanUrl ?? "");
+    var user = (string)ViewBag.User;
+    var userPassowrd = (string)ViewBag.UserPassword;
+
 }
 
 <section class="live-stream-section">
     <div class="container">
-        <h1 class="live-title">Xổ gà Server HD1 trực tiếp 18h ngày 4/8/25</h1>
+        <h1 class="live-title">Vần xổ gà trực tiếp 18h ngày <span id="today"></span> </h1>
 
-
-
-
-
-
-        <div class="stream-controls">
-            <button class="stream-btn active">HD1</button>
-            <button class="stream-btn">HD2</button>
-            <button class="stream-btn">HD3</button>
-            <button class="stream-btn">HD4</button>
-        </div>
+        @*<div class="stream-controls">
+                <button class="stream-btn active">HD1</button>
+                <button class="stream-btn">HD2</button>
+                <button class="stream-btn">HD3</button>
+                <button class="stream-btn">HD4</button>
+            </div>*@
 
         <div class="stream-container">
             <div class="stream-left">
                 <div class="video-player">
+                        <div class="viewer-count"><i class="fas fa-eye"></i> <span id="viewerCount"></spanid="viewerCount"></div>
                     <div class="video-container">
                         <div class="live-badge">LIVE</div>
-
-                        <video style="height:100% !important" id="player" controls autoplay></video>
-
+                     
+                        <video style="height: 750px !important; width: 100%; object-fit: contain; background: black; "
+                               id="player"
+                               controls
+                               autoplay
+                               muted
+                               playsinline
+                               webkit-playsinline="true"
+                               x5-playsinline="true"
+                               x5-video-player-type="h5"
+                               x5-video-player-fullscreen="false"
+                               preload="metadata">
+                        </video>
                         <div class="video-info">
-                            <h3>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h3>
-                            <p class="phone-number">0393.835.679</p>
+                            <h3 style="color:red">CLB GÀ CHỌI LIVE Vần xổ gà 18H30 HÀNG NGÀY</h3>
+                            <p class="phone-number"><a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="stream-right">
-                <div class="live-chat">
-                    <div class="chat-header">
-                        <h3>Live Chat</h3>
-                        <div class="viewer-count"><i class="fas fa-eye"></i> <span id="viewerCount">0</span></div>
-                    </div>
-                    <div class="chat-messages" id="chatBox">
-
-                    </div>
-                    @*<form class="chat-input" autocomplete="off">*@
-                    <div class="chat-input">
+                <div class="live-chat chat-container">
+                    <div class="chat-input" >
                         <input type="text" id="username" class="chat-name" placeholder="Tên của bạn..." required>
                         <input type="text" id="message" class="chat-message" placeholder="Nhập nội dung chat..." required>
                         <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Gửi</button>
                     </div>
+                    <div class="chat-header" style="margin-top:20px">
+                        <h3>Live Chat</h3>
+                    </div>
+                    <div class="chat-messages">
 
-                    @*</form>*@
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -64,8 +70,8 @@
         <div class="contact-info">
             <h2>Kết Nối Đam Mê</h2>
             <div class="contact-details">
-                <p><i class="fas fa-phone"></i> 0393.835.679</p>
-                <p><i class="fas fa-map-marker-alt"></i> Phước Lâm, Hoà Hiệp Bắc, Đồng Hoà, Phú Yên</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
+                <p style=" width: 90%; "><i class="fas fa-map-marker-alt"></i> Thôn Phú Quý, Xã An Chấn, Huyện Tuy An, Tỉnh Phú Yên</p>
             </div>
             <div class="social-buttons">
                 <button class="social-btn zalo">
@@ -85,19 +91,50 @@
 
         <div class="info-panels">
             <div class="panel bank-info">
-                <h3>Thông Tin Chuyển Khoản</h3>
-                <div class="bank-details">
-                    <p><strong>Ngân Hàng VietinBank</strong></p>
-                    <p>Tên người nhận: Lê Duy Thanh</p>
-                    <p>Số tài khoản: 0300000000</p>
-                    <button class="copy-btn">Sao chép STK</button>
+                <div class="atm-card">
+                    <div class="card-header">
+                        <div class="bank-logo">
+                            <img src="~/thumbnail-logo-vietcombank.jpg" alt="Vietcombank Logo" class="bank-logo-img">
+                            <span>VIETCOMBANK</span>
+                        </div>
+                        <div class="card-type">
+                            <i class="fas fa-credit-card"></i>
+                            <span>DEBIT</span>
+                        </div>
+                    </div>
+
+                    <div class="card-number">
+                        <span class="number-group">0721</span>
+                        <span class="number-group">0006</span>
+                        <span class="number-group">3972</span>
+                        <span class="number-group">7</span>
+                    </div>
+
+                    <div class="card-details">
+                        <div class="card-holder">
+                            <span class="label">Tên chủ thẻ</span>
+                            <span class="value">NGUYEN QUOC TINH</span>
+                        </div>
+                        <div class="card-expiry">
+                            <span class="label">Ngày phát hành</span>
+                            <span class="value">01/25</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="chip"></div>
+                        <button class="copy-btn">
+                            <i class="fas fa-copy"></i>
+                            Sao chép STK
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <div class="panel regulations">
                 <h3>Quy định</h3>
                 <ul class="rules-list">
-                    <li>Xổ Gà Mua Bán Trên Tinh Thần Giao Lưu Vui Vẻ, Lịch Sự Tránh Lừa Đảo</li>
+                    <li>Vần xổ gà Mua Bán Trên Tinh Thần Giao Lưu Vui Vẻ, Lịch Sự Tránh Lừa Đảo</li>
                     <li>Không Có Số Điện Thoại, Không Cá Cược Dưới Mọi Hình Thức</li>
                     <li>Website hoạt động vì mục đích giải trí</li>
                     <li>Tuân thủ pháp luật Việt Nam</li>
@@ -112,45 +149,27 @@
 <section class="replay-section">
     <div class="container">
         <h2>VIDEO XEM LẠI</h2>
-        <p class="replay-desc">Video xổ gà được cập nhật hàng ngày</p>
-
+        <p class="replay-desc">Video Vần xổ gà được cập nhật hàng ngày</p>
         <div class="video-grid">
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <div class="play-overlay">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h4>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h4>
-                    <p class="video-date">03/08/2025</p>
-                </div>
-            </div>
 
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <div class="play-overlay">
-                        <i class="fas fa-play"></i>
+            @foreach (var i in Model)
+            {
+                <div class="video-card" style="cursor:pointer;" onclick="window.location='@Url.Action("Details", "Articles", new { id = i.Id })'">
+                    <div class="video-thumbnail" style="background-image: url('\gachoi.jpg'); background-size: cover; background-position: center;">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h4>@i.Name</h4>
+                        <p class="video-date">@i.CreatedDate</p>
                     </div>
                 </div>
-                <div class="video-info">
-                    <h4>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h4>
-                    <p class="video-date">02/08/2025</p>
-                </div>
-            </div>
+            }
 
-            <div class="video-card">
-                <div class="video-thumbnail">
-                    <div class="play-overlay">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-                <div class="video-info">
-                    <h4>CLB GÀ CHỌI LIVE XỔ GÀ 18H30 HÀNG NGÀY</h4>
-                    <p class="video-date">01/08/2025</p>
-                </div>
-            </div>
+
         </div>
+
     </div>
 </section>
 
@@ -163,7 +182,7 @@
 
         <div class="about-content">
             <div class="about-text">
-                <p>Chào mừng bạn đến với gachoicauthanh.com - nơi kết nối những người đam mê gà chọi. Chúng tôi cung cấp thông tin về cách nuôi, chăm sóc và huấn luyện gà chọi một cách chuyên nghiệp.</p>
+                <p>Chào mừng bạn đến với CLB GÀ CHỌI C3 - nơi kết nối những người đam mê gà chọi. Chúng tôi cung cấp thông tin về cách nuôi, chăm sóc và huấn luyện gà chọi một cách chuyên nghiệp.</p>
                 <p>CLB Gà Chọi hoạt động với mục đích giải trí và giao lưu, không khuyến khích các hoạt động cá cược. Chúng tôi cam kết tuân thủ pháp luật Việt Nam và tạo môi trường lành mạnh cho cộng đồng yêu thích gà chọi.</p>
             </div>
 
@@ -175,127 +194,67 @@
                     <div class="small-image"></div>
                 </div>
                 <div class="main-image">
-                    <h3>CLB Gà Chọi Cậu Thanh LIVE XỔ GÀ 18H30 HÀNG NGÀY</h3>
+                    <h3>CLB Gà Chọi C3 LIVE Vần xổ gà 18H30 HÀNG NGÀY</h3>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-@section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+async function playStream() {
+        const video = document.getElementById('player');
 
-    <script>
-        const chatMessages = document.querySelector('.chat-messages');
-
-        function addMessage(username, message, timestamp = new Date()) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message';
-
-            const timeLabel = timeAgo(new Date(timestamp));
-            const isoTime = new Date(timestamp).toISOString();
-
-            messageDiv.innerHTML = `
-                        <div style="display:flex;justify-content:space-between;align-items:center">
-                            <div>
-                                <span class="username">${username}:</span>
-                                <span class="message-text">${message}</span>
-                            </div>
-                            <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 120px;">
-                                ${timeLabel}
-                            </span>
-                        </div>
-                    `;
-
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-        const connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
-        connection.on("UpdateViewerCount", function (count) {
-            document.getElementById("viewerCount").innerText = count;
+        // Ngăn video bật fullscreen
+        video.addEventListener('webkitbeginfullscreen', function(e) {
+            e.preventDefault();
         });
 
-        connection.on("ReceiveMessage", (user, message, timestamp) => {
-            const time = timestamp ? new Date(timestamp) : new Date();
-            addMessage(user, message, time);
+        video.addEventListener('webkitendfullscreen', function(e) {
+            e.preventDefault();
         });
 
+        // Đảm bảo playsinline được set
+        video.setAttribute('playsinline', true);
+        video.setAttribute('webkit-playsinline', true);
 
-        connection.start().catch(err => console.error(err.toString()));
+        const pc = new RTCPeerConnection();
+        pc.ontrack = (event) => {
+            video.srcObject = event.streams[0];
 
-        function sendMessage() {
-            const user = document.getElementById("username").value;
-            const message = document.getElementById("message").value;
-            if (user && message) {
-                connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
-                document.getElementById("message").value = "";
-            }
-        }
+            // Đảm bảo video play inline sau khi có stream
+            setTimeout(() => {
+                video.play().catch(console.error);
+            }, 100);
+        };
 
-        function timeAgo(date) {
-            const seconds = Math.floor((new Date() - date) / 1000);
+        // Thêm track audio/video vào peer connection
+        pc.addTransceiver("video", { direction: "recvonly" });
+        pc.addTransceiver("audio", { direction: "recvonly" });
 
-            if (seconds < 60) return `${seconds} giây trước`;
+        const offer = await pc.createOffer();
+        await pc.setLocalDescription(offer);
+        const auth = btoa(`@user:@userPassowrd`);
 
-            const minutes = Math.floor(seconds / 60);
-            if (minutes < 60) return `${minutes} phút trước`;
+        // Gửi offer đến MediaMTX
+        const res = await fetch('@streamUrl' + "/whep", {
+            method: "POST",
+            body: offer.sdp,
+            headers: {
+                "Content-Type": "application/sdp",
+                'Authorization': `Basic ${auth}`
+            },
+        });
 
-            const hours = Math.floor(minutes / 60);
-            if (hours < 24) return `${hours} giờ trước`;
+        const answer = await res.text();
+        await pc.setRemoteDescription({
+            type: "answer",
+            sdp: answer,
+        });
+    }
 
-            const days = Math.floor(hours / 24);
-            return `${days} ngày trước`;
-        }
-
-        setInterval(() => {
-            const timeSpans = document.querySelectorAll(".message-time");
-
-            timeSpans.forEach(span => {
-                const timestamp = span.getAttribute("data-timestamp");
-                if (timestamp) {
-                    const time = new Date(timestamp);
-                    span.textContent = `${timeAgo(time)}`;
-                }
-            });
-        }, 5000);
-
-
-    </script>
-
-    <script>
-        async function playStream() {
-            const video = document.getElementById('player');
-            const streamUrl = "http://localhost:8889/mystream";
-
-            // Lấy SDP offer từ trình duyệt
-            const pc = new RTCPeerConnection();
-            pc.ontrack = (event) => {
-                video.srcObject = event.streams[0];
-            };
-
-            // Thêm track audio/video vào peer connection
-            pc.addTransceiver("video", { direction: "recvonly" });
-            pc.addTransceiver("audio", { direction: "recvonly" });
-
-            const offer = await pc.createOffer();
-            await pc.setLocalDescription(offer);
-
-            // Gửi offer đến MediaMTX
-            const res = await fetch(streamUrl + "/whep", {
-                method: "POST",
-                body: offer.sdp,
-                headers: { "Content-Type": "application/sdp" },
-            });
-
-            const answer = await res.text();
-            await pc.setRemoteDescription({
-                type: "answer",
-                sdp: answer,
-            });
-        }
-
+    // Khởi chạy sau khi DOM load
+    document.addEventListener('DOMContentLoaded', function() {
         playStream();
-    </script>
-
-}
+    });
+</script>

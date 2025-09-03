@@ -3,68 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLB GÀ CHỌI - Trang Chủ</title>
+    <title>CLB GÀ CHỌI C3 - @ViewBag.Title</title>
+    <link rel="icon" href="~/logogachoi.png" type="image/png">
     <link rel="stylesheet" href="~/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
 </head>
 <body>
     <!-- Header Navigation -->
     <header class="header">
         <nav class="nav">
-            <div class="nav-brand">
-                @*<img src="https://www.svgrepo.com/show/15495/rooster.svg" alt="Logo Gà Chọi" class="logo">*@
-                CLB GÀ CHỌI
+            <div class="nav-brand" onclick="window.location.href='/'" style="cursor: pointer;">
+                <img src="~/logogachoi.png" alt="Logo Gà Chọi" class="logo">
             </div>
-            <ul class="nav-menu">
-                <li><a href="#" class="nav-link active">Trang Chủ</a></li>
-                <li><a href="#" class="nav-link">Video Xổ Gà</a></li>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link active">Trang Chủ</a></li>
+                <li><a href="/Articles/index" class="nav-link">Video Vần xổ gà</a></li>
                 <li><a href="#" class="nav-link">Liên Lạc</a></li>
-                <li>
-                    <a href="/Videos">Video đã lưu</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a href="/admin/home" class="nav-link">Admin</a></li>
+                    <li>
+
+                        @*<a href="/identity/account/logout" class="nav-link">Đăng Xuất</a>*@
+                        <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout"
+                              asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post" class="d-inline">
+                            <a href="#" onclick="document.getElementById('logoutForm').submit(); return false;"
+                               class="nav-link">
+                                Đăng xuất
+                            </a>
+                        </form>
 
 
-                </li>
-                <li><a asp-area="Identity" asp-page="/Account/Login" class="nav-link">Đăng Nhập</a></li>
+                    </li>
+                 
+                }
+                else
+                {
+                    <!-- Chưa đăng nhập: hiện Đăng Nhập -->
+                    <li><a href="/identity/account/login" class="nav-link">Đăng Nhập</a></li>
+                }
+
             </ul>
         </nav>
     </header>
+
 
     <!-- Main Content -->
     <main class="main-content">
         <!-- Live Stream Section -->
         @RenderBody()
     </main>
-
-    <!-- Footer -->
+    <button id="backToTop" title="Về đầu trang">↑</button>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>CLB Gà Chọi Cậu Thanh</h3>
-                    <p>Vẫn xổ gà trực tiếp 18h hàng ngày</p>
+                    <h3 style="color:red">CLB Gà Chọi C3</h3>
+                    <p>Vẫn Vần xổ gà trực tiếp 18h hàng ngày</p>
                     <p>Giá bán mua bán gà chọi đủ các tỉnh</p>
-                    <p><i class="fas fa-phone"></i> 0393.835.679</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Phước Lâm, Hoà Hiệp Bắc, Đồng Hoà, Phú Yên</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Thôn Phú Quý, Xã An Chấn, Huyện Tuy An, Tỉnh Phú Yên</p>
                 </div>
 
                 <div class="footer-rules">
                     <h3>Quy Định</h3>
-                    <p>Website CLB Gà Chọi Thanh hoạt động với hình thức giải trí, vui lòng không cá độ dưới mọi hình thức vi phạm pháp luật Việt Nam</p>
-                    <p>Xổ Gà Mua Bán Trên Tinh Thần Giao Lưu Vui Vẻ, Lịch Sự Tránh Lừa Đảo</p>
-                    <p>Chính sách bảo mật</p>
+                    <p>Website CLB Gà Chọi C3 hoạt động với hình thức giải trí, vui lòng không cá độ dưới mọi hình thức vi phạm pháp luật Việt Nam</p>
+                    <p>Vần xổ gà Mua Bán Trên Tinh Thần Giao Lưu Vui Vẻ, Lịch Sự Tránh Lừa Đảo</p>
+                    <a href="/Policy">
+                        <p> Chính sách bảo mật</p>
+
+                    </a>
                 </div>
             </div>
 
             <div class="footer-copyright">
-                <p>Bản quyền thuộc về CLB Gà Chọi Cậu Thanh © 2025</p>
+                <p>Bản quyền thuộc về CLB Gà Chọi C3 © 2025</p>
             </div>
         </div>
     </footer>
 
-    <script src="~/js/script.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <div class="floating-btn phone-btn" title="Gọi điện thoại">
+            <i class="fas fa-phone"></i>
+        </div>
+        <div class="floating-btn zalo-btn" title="Kết bạn Zalo">
+            <img src="~/Logo-zalo-png.png" alt="Alternate Text" height="100%" width="100%" />
+        </div>
+        <div class="floating-btn vip-btn" title="VIP Member">
+            <span class="vip-text">
+                <span class="vip-main">VIP</span>
+                <span class="vip-sub">MEMBER</span>
+            </span>
+        </div>
+    </div>
+
     @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <script>
+        const navLinks = document.querySelectorAll("#navMenu .nav-link");
+        const currentPath = window.location.pathname; // Lấy đường dẫn hiện tại
+
+        navLinks.forEach(link => {
+            // So sánh href của link với path hiện tại
+            if (link.getAttribute("href") === currentPath) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+
+            // Gắn click để highlight ngay khi click mà không reload
+            link.addEventListener("click", function (e) {
+                navLinks.forEach(l => l.classList.remove("active"));
+                this.classList.add("active");
+            });
+        });
+        const chatMessages = document.querySelector('.chat-messages');
+        function formatDate(date) {
+            let day = String(date.getDate()).padStart(2, '0');
+            let month = String(date.getMonth() + 1).padStart(2, '0');
+            let year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+         function mentionUser(username) {
+            const messageInput = document.getElementById("message");
+            const currentValue = messageInput.value;
+
+
+            if (currentValue && !currentValue.endsWith(' ')) {
+                messageInput.value = currentValue + ' @@' + username + ' ';
+            } else {
+                messageInput.value = currentValue + '@@' + username + ' ';
+            }
+
+            // Focus vào input để người dùng có thể tiếp tục gõ
+            messageInput.focus();
+        }
+           function isUserMentioned(message, currentUsername) {
+            if (!currentUsername) return false;
+            const mentionPattern = new RegExp(`@@${currentUsername}\\b`, 'i');
+            return mentionPattern.test(message);
+        }
+        function highlightMentions(message) {
+
+            return message.replace(/@@(\w+)/g, '<span class="mention">@@$1</span>');
+        }
+        document.getElementById("today").textContent = formatDate(new Date());
+        function addMessage(username, message, timestamp = new Date()) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+
+            const currentUser = document.getElementById("username").value;
+            const mentioned = isUserMentioned(message, currentUser);
+
+            if (mentioned) {
+                messageDiv.classList.add('mentioned-message');
+            }
+
+            const timeLabel = timeAgo(new Date(timestamp));
+            const isoTime = new Date(timestamp).toISOString();
+            const highlightedMessage = highlightMentions(message);
+
+            messageDiv.innerHTML = `
+                                    <div style="display:flex;justify-content:space-between;align-items:center">
+                                        <div style="overflow-wrap: break-word;white-space: normal;width: 60%;">
+                                            <span class="username" onclick="mentionUser('${username}')">${username}:</span>
+                                            <span class="message-text">${highlightedMessage}</span>
+                                        </div>
+                                        <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 70px !important;font-size: 12px;">
+                                            ${timeLabel}
+                                        </span>
+                                    </div>
+                                `;
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            if (mentioned) {
+                // Scroll đến tin nhắn mention
+                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+
+            }
+        }
+        window.connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
+        window.connection.on("LiveStarted", async () => {
+            window.location.href = window.location.href;
+        });
+
+        window.connection.on("UpdateViewerCount", function (count) {
+            document.getElementById("viewerCount").innerText = count;
+        });
+
+        window.connection.on("ReceiveMessage", (user, message, timestamp) => {
+            const time = timestamp ? new Date(timestamp) : new Date();
+            addMessage(user, message, time);
+        });
+
+
+        window.connection.start().catch(err => console.error(err.toString()));
+
+        function sendMessage() {
+            const user = document.getElementById("username").value;
+            const message = document.getElementById("message").value;
+            if (user && message) {
+                connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
+                document.getElementById("message").value = "";
+            }
+        }
+
+        function timeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+
+            if (seconds < 60) return `${seconds} giây trước`;
+
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `${minutes} phút trước`;
+
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours} giờ trước`;
+
+            const days = Math.floor(hours / 24);
+            return `${days} ngày trước`;
+        }
+
+        setInterval(() => {
+            const timeSpans = document.querySelectorAll(".message-time");
+
+            timeSpans.forEach(span => {
+                const timestamp = span.getAttribute("data-timestamp");
+                if (timestamp) {
+                    const time = new Date(timestamp);
+                    span.textContent = `${timeAgo(time)}`;
+                }
+            });
+        }, 5000);
+
+
+    </script>
+
+
+
 </body>
 </html>

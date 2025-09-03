@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
+using System.Drawing.Printing;
+using webdaga.DbContext;
 using webdaga.Helper;
 using webdaga.Models;
 
@@ -10,31 +12,28 @@ namespace webdaga.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly StreamOptions _opt;
+        private readonly ApplicationDbContext _db;
 
-        public HomeController(ILogger<HomeController> logger, IOptions<StreamOptions> opt, IHttpClientFactory? httpFactory = null)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db, IOptions<StreamOptions> opt, IHttpClientFactory? httpFactory = null)
         {
             _logger = logger;
             _opt = opt.Value;
+            _db = db;
         }
 
         public async Task<IActionResult> Index()
         {
-            ViewBag.HlsUrl = _opt.HlsPublicUrl;
-            ViewBag.IsLive = await ProbeLiveAsync();
-            return View();
+            ViewBag.streanUrl = _opt.streamUrl;
+            ViewBag.User = _opt.User;
+            ViewBag.UserPassword = _opt.UserPassword;
+            var Articles = _db.Articles
+            .OrderByDescending(a => a.CreatedDate)
+            .Skip((1 - 1) * 3)
+            .Take(3)
+            .ToList();
+            return View(Articles);
         }
-        private async Task<bool> ProbeLiveAsync()
-        {
-            try
-            {
-                using var client = new HttpClient();
-                client.Timeout = TimeSpan.FromSeconds(2);
-                using var req = new HttpRequestMessage(HttpMethod.Head, _opt.HlsLocalProbeUrl);
-                var res = await client.SendAsync(req);
-                return res.IsSuccessStatusCode;
-            }
-            catch { return false; }
-        }
+    
 
         public IActionResult Privacy()
         {

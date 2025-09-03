@@ -1,0 +1,108 @@
+﻿@model articlesModel
+@{ 
+    ViewBag.Title = "Xem lại video";
+}
+
+    <section class="article-detail-section">
+
+
+            <div class="container">
+                <h1>@Model.Name</h1>
+                <div class="video-wrapper">
+                    <video width="100%" height="371px !important" controls>
+                        <source src="@Model.VideoUrl" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ thẻ video.
+                    </video>
+                </div>
+                <div class="meta">
+                    <span>@Model.CreatedDate • CLB GÀ CHỌI C3</span>
+                </div>
+                <div class="hotline">
+                    Hotline / Zalo <a href="tel:+84335501179" class="tel-link">033.550.1179</a>
+                </div>
+                <div class="content">
+                    <p>Với nhiều năm kinh nghiệm nuôi dưỡng, chăm sóc và cung cấp gà chọi, gà đòn “Uy Tín – Chất Lượng” <strong>CLB GÀ CHỌI C3</strong> luôn sẵn sàng chia sẻ những kinh nghiệm thực tế, tư vấn hướng dẫn kỹ thuật làm chuồng trại, phương pháp nuôi để tránh các rủi ro và rút ngắn các công đoạn chuẩn bị cần thiết trong quá trình nuôi cho các khách hàng có nhu cầu.</p>
+                    <p>Đến với <strong>CLB GÀ CHỌI C3</strong>, khách hàng sẽ nhận được sự tư vấn , hướng dẫn chu đáo nhiệt tình, đặc biệt giải cứu cạnh tranh tình nghĩa. Hy vọng rằng sản phẩm của trang trại sẽ làm hài lòng quý khách hàng.</p>
+                </div>
+                <div class="footer">
+                    <h3>CLB GÀ CHỌI C3</h3>
+                    <p>Liên hệ Hotline/Zalo: <a href="tel:+84335501179" class="tel-link">033.550.1179</a>
+                    <p>Địa chỉ: Thôn Phú Quý, Xã An Chấn, Huyện Tuy An, Tỉnh Phú Yên</p>
+                </div>
+            </div>
+
+
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+                line-height: 1.6;
+            }
+
+            .container {
+                max-width: 700px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px;
+                text-align: center;
+                color: #f1c40f;
+                margin-bottom: 15px;
+            }
+
+
+
+                .video-wrapper iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+
+            .meta {
+                font-size: 14px;
+                margin: 10px 0;
+                color: #ccc;
+            }
+
+            .hotline {
+                background: linear-gradient(to right, #333, #111);
+                color: #fff;
+                padding: 10px;
+                text-align: center;
+                margin: 15px 0;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+
+                .hotline strong {
+                    color: #f1c40f;
+                }
+
+            .content p {
+                margin-bottom: 15px;
+                text-align: justify;
+            }
+
+            .footer {
+                text-align: center;
+                margin-top: 20px;
+            }
+
+                .footer h3 {
+                    margin-bottom: 10px;
+                    color: #fff;
+                }
+
+                .footer p {
+                    margin: 5px 0;
+                }
+
+        </style>
+
+    </section>

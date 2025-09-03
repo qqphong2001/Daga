@@ -50,5 +50,9 @@ public class ChatHub : Hub
 
         await Clients.All.SendAsync("ReceiveMessage", user, message);
     }
-}
+        public async Task StartLive()
+        {
+            await Clients.All.SendAsync("LiveStarted");
+        }
+    }
 }

@@ -5,8 +5,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <title>@ViewData["Title"] - webdaga</title>
-
+    <title>CLB GÀ CHỌI C3 - @ViewData["Title"]</title>
+    <link rel="icon" href="~/logogachoi.png" type="image/png">
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <meta name="color-scheme" content="light dark" />
@@ -28,7 +28,7 @@
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
     <link rel="stylesheet"
-          href="~/admin/css/adminlte.css"/>
+          href="~/admin/css/adminlte.css" />
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@@fontsource/source-sans-3@5.0.12/index.css"
           integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q="
@@ -59,6 +59,47 @@
           href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
           integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
           crossorigin="anonymous" />
+    <style>
+        #sidebarMenu {
+            transition: transform 0.3s ease;
+        }
+
+        @@media (max-width: 992px) {
+            #sidebarMenu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 250px;
+                height: 100%;
+                background: #1a1a1a;
+                z-index: 1050;
+            }
+        }
+
+        #mobileMenu {
+            animation: slideDown 0.3s ease forwards;
+            width: 100%;
+            top: 108px;
+            position: absolute;
+        }
+
+            #mobileMenu a,
+            #mobileMenu a:hover {
+                text-decoration: none;
+            }
+
+        @@keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -68,11 +109,18 @@
         <!--begin::Header-->
         <nav class="app-header navbar navbar-expand bg-body">
             <!--begin::Container-->
+            <button class="btn btn-outline-secondary d-lg-none me-2" style="border:none" id="menuToggle">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="container-fluid d-lg-none">
+                <a class="navbar-brand" href="/admin/home">
+                    <img src="~/logogachoi.png" height="100%" width="100%"/>
+                </a>
+            </div>
             <div class="container-fluid">
                 <!--begin::Start Navbar Links-->
                 <ul class="navbar-nav">
-               
-       
                 </ul>
                 <!--end::Start Navbar Links-->
                 <!--begin::End Navbar Links-->
@@ -89,21 +137,29 @@
             </div>
             <!--end::Container-->
         </nav>
+
+        <div id="mobileMenu" class="d-lg-none d-none bg-dark text-white p-3" style="z-index:999">
+            <ul class="list-unstyled m-0">
+                <li><a href="/admin/articles/index" class="text-white d-block py-2">Bài đăng</a></li>
+                <li><a href="/admin/publish" class="text-white d-block py-2">LiveStream</a></li>
+               
+            </ul>
+        </div>
+
         <!--end::Header-->
         <!--begin::Sidebar-->
-        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+        <aside class="app-sidebar bg-body-secondary shadow d-none d-lg-block" data-bs-theme="dark" id="sidebarMenu">
             <!--begin::Sidebar Brand-->
-            <div class="sidebar-brand">
+            <div class="sidebar-brand" style="height: 7.5rem !important">
                 <!--begin::Brand Link-->
-                <a href="./index.html" class="brand-link">
+                <a href="/admin/home" class="brand-link">
 
-                    <span class="brand-text fw-light">Trại gà</span>
+                    <img src="~/logogachoi.png" />
                     <!--end::Brand Text-->
                 </a>
                 <!--end::Brand Link-->
             </div>
-            <!--end::Sidebar Brand-->
-            <!--begin::Sidebar Wrapper-->
+
             <div class="sidebar-wrapper">
                 <nav class="mt-2">
                     <!--begin::Sidebar Menu-->
@@ -113,8 +169,8 @@
                         aria-label="Main navigation"
                         data-accordion="false"
                         id="navigation">
-           
-            
+
+
 
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/articles/index">
@@ -122,8 +178,13 @@
                                 <p>Bài đăng</p>
                             </a>
                         </li>
-   
-                      
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/publish">
+                                <i class="nav-icon bi bi-grip-horizontal"></i>
+                                <p>LiveStream</p>
+                            </a>
+                        </li>
+
                     </ul>
                     <!--end::Sidebar Menu-->
                 </nav>
@@ -144,10 +205,9 @@
             <!--end::To the end-->
             <!--begin::Copyright-->
             <strong>
-                Copyright &copy; 2014-2025&nbsp;
-            
+                Bản quyền thuộc về CLB Gà Chọi C3 © 2025
+
             </strong>
-            All rights reserved.
             <!--end::Copyright-->
         </footer>
         <!--end::Footer-->
@@ -207,65 +267,17 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
             integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8="
             crossorigin="anonymous"></script>
-    <!-- ChartJS -->
+
     <script>
-        // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-        // IT'S ALL JUST JUNK FOR DEMO
-        // ++++++++++++++++++++++++++++++++++++++++++
+        const toggleBtn = document.getElementById("menuToggle");
+        const menu = document.getElementById("mobileMenu");
 
-        const sales_chart_options = {
-            series: [
-                {
-                    name: 'Digital Goods',
-                    data: [28, 48, 40, 19, 86, 27, 90],
-                },
-                {
-                    name: 'Electronics',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                },
-            ],
-            chart: {
-                height: 300,
-                type: 'area',
-                toolbar: {
-                    show: false,
-                },
-            },
-            legend: {
-                show: false,
-            },
-            colors: ['#0d6efd', '#20c997'],
-            dataLabels: {
-                enabled: false,
-            },
-            stroke: {
-                curve: 'smooth',
-            },
-            xaxis: {
-                type: 'datetime',
-                categories: [
-                    '2023-01-01',
-                    '2023-02-01',
-                    '2023-03-01',
-                    '2023-04-01',
-                    '2023-05-01',
-                    '2023-06-01',
-                    '2023-07-01',
-                ],
-            },
-            tooltip: {
-                x: {
-                    format: 'MMMM yyyy',
-                },
-            },
-        };
-
-        const sales_chart = new ApexCharts(
-            document.querySelector('#revenue-chart'),
-            sales_chart_options,
-        );
-        sales_chart.render();
+        toggleBtn.addEventListener("click", () => {
+            menu.classList.toggle("d-none");
+        });
     </script>
+
+
     <!-- jsvectormap -->
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
             integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y="
@@ -274,99 +286,7 @@
             integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
             crossorigin="anonymous"></script>
     <!-- jsvectormap -->
-    <script>
-        // World map by jsVectorMap
-        new jsVectorMap({
-            selector: '#world-map',
-            map: 'world',
-        });
 
-        // Sparkline charts
-        const option_sparkline1 = {
-            series: [
-                {
-                    data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021],
-                },
-            ],
-            chart: {
-                type: 'area',
-                height: 50,
-                sparkline: {
-                    enabled: true,
-                },
-            },
-            stroke: {
-                curve: 'straight',
-            },
-            fill: {
-                opacity: 0.3,
-            },
-            yaxis: {
-                min: 0,
-            },
-            colors: ['#DCE6EC'],
-        };
-
-        const sparkline1 = new ApexCharts(document.querySelector('#sparkline-1'), option_sparkline1);
-        sparkline1.render();
-
-        const option_sparkline2 = {
-            series: [
-                {
-                    data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921],
-                },
-            ],
-            chart: {
-                type: 'area',
-                height: 50,
-                sparkline: {
-                    enabled: true,
-                },
-            },
-            stroke: {
-                curve: 'straight',
-            },
-            fill: {
-                opacity: 0.3,
-            },
-            yaxis: {
-                min: 0,
-            },
-            colors: ['#DCE6EC'],
-        };
-
-        const sparkline2 = new ApexCharts(document.querySelector('#sparkline-2'), option_sparkline2);
-        sparkline2.render();
-
-        const option_sparkline3 = {
-            series: [
-                {
-                    data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21],
-                },
-            ],
-            chart: {
-                type: 'area',
-                height: 50,
-                sparkline: {
-                    enabled: true,
-                },
-            },
-            stroke: {
-                curve: 'straight',
-            },
-            fill: {
-                opacity: 0.3,
-            },
-            yaxis: {
-                min: 0,
-            },
-            colors: ['#DCE6EC'],
-        };
-
-        const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
-        sparkline3.render();
-    </script>
-    <!--end::Script-->
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

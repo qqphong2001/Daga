@@ -11,7 +11,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Login - Vàng Đen</title>
+    <link rel="icon" href="~/logogachoi.png" type="image/png">
+    <title>CLB GÀ CHỌI C3 - Đăng nhập</title>
     <style>
         :root {
             --bg: #000000;
@@ -82,23 +83,41 @@
         <h1>Đăng nhập</h1>
         <form id="account" method="post">
             <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <!-- Hiển thị lỗi model -->
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert">
+                @if (ViewData.ModelState[""]?.Errors.Count > 0)
+                {
+                    foreach (var error in ViewData.ModelState[""].Errors)
+                    {
+                        <div>@error.ErrorMessage</div>
+                    }
+                }
+            </div>
 
-            <div class="text-danger" role="alert"></div>
             <div>
                 <label for="email">Email</label>
-                <input id="email" type="email" name="Input.Email" autocomplete="username" placeholder="name@example.com" required />
-                <span class="text-danger" id="emailError"></span>
+                <input id="email" type="email" name="Input.Email" autocomplete="username" placeholder="name@example.com" required value="@Model.Input?.Email" />
             </div>
+
             <div>
                 <label for="password">Mật khẩu</label>
                 <input id="password" type="password" name="Input.Password" autocomplete="current-password" placeholder="password" required />
-                <span class="text-danger" id="passError"></span>
             </div>
 
+            <!-- Hiển thị thông báo lỗi riêng -->
+            @if (TempData["LoginError"] != null)
+            {
+                <div class="text-danger" style="margin-top: 10px;">@TempData["LoginError"]</div>
+            }
+
             <button id="login-submit" type="submit" class="btn">Đăng nhập</button>
+
+            <div style="margin-top: 15px; text-align: center;">
+                <a href="/" class="btn btn-secondary" style="text-decoration: none; padding: 8px 15px;">← Trở về trang chủ</a>
+            </div>
         </form>
     </main>
+
 </body>
 </html>
 

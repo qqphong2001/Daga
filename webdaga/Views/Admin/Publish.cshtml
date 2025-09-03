@@ -2,33 +2,342 @@
     ViewBag.Title = "Phát livestream";
     var whip = (string)ViewBag.WhipEndpoint;
     var token = (string)(ViewBag.WhipBearerToken ?? string.Empty);
+    var admin = (string)(ViewBag.Admin ?? string.Empty);
+    var user = (string)(ViewBag.User ?? string.Empty);
+    var adminPassword = (string)(ViewBag.AdminPassword ?? string.Empty);
+    var userPassoword = (string)(ViewBag.UserPassowrd ?? string.Empty);
 }
+<style>
+    body {
+        margin: 0;
+        padding: 10px;
+        background-color: #111;
+        color: #fff;
+        font-family: Arial, sans-serif;
+    }
+
+    #videoContainer {
+        position: relative;
+        width: 100%;
+        max-width: 100vw;
+        height: 480px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    #preview, #overlayCanvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+        transition: transform 0.5s ease;
+    }
+
+    #preview {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        background: #000;
+        transform: translate(-50%, -50%);
+    }
+
+    #overlayCanvas {
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    /* Landscape mode styles */
+    .landscape-mode #videoContainer {
+        height: 100vh;
+        max-height: 100vh;
+        width: 100vw;
+        max-width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background: #000;
+    }
+
+    .landscape-mode #preview,
+    .landscape-mode #overlayCanvas {
+        width: 100vh;
+        height: 100vw;
+        max-width: none;
+        max-height: none;
+    }
+
+    .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px;
+        background-color: #1a1a1a;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        margin-bottom: 15px;
+    }
+
+    .control-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .control-group h3 {
+        margin: 0;
+        color: #fff;
+        font-size: 16px;
+        min-width: 120px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #333;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.1s;
+        white-space: nowrap;
+    }
+
+    button:hover {
+        background-color: #555;
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+
+    button:disabled {
+        background-color: #666;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    /* Rotation control buttons */
+    .rotation-btn {
+        background-color: #9b59b6 !important;
+        font-size: 16px;
+    }
+
+    .rotation-btn:hover {
+        background-color: #8e44ad !important;
+    }
+
+    #toggleScoreboard {
+        background-color: #4a90e2;
+    }
+
+    #increaseGreen, #decreaseGreen {
+        border: none;
+        border-radius: 8px;
+        padding: 7px;
+        color: white;
+        background-color: #2ecc71;
+    }
+
+    #increaseRed, #decreaseRed {
+        background-color: #e74c3c;
+        border: none;
+        border-radius: 8px;
+        padding: 7px;
+        color: white;
+    }
+
+    #increasePair, #decreasePair {
+        background-color: #f1c40f;
+        color: #000;
+    }
+
+    select {
+        padding: 8px 12px;
+        font-size: 14px;
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #555;
+        border-radius: 5px;
+    }
+
+    #status {
+        margin-top: 10px;
+        color: #0a0;
+        font-weight: bold;
+        padding: 10px;
+        background-color: #222;
+        border-radius: 5px;
+    }
+
+    .main-controls {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .main-controls button {
+        font-size: 18px;
+        padding: 15px 30px;
+        margin: 0 10px;
+    }
+
+    #btnStart {
+        background-color: #27ae60;
+    }
+
+    #btnStart:hover {
+        background-color: #229954;
+    }
+
+    #btnStop {
+        background-color: #c0392b;
+    }
+
+    #btnStop:hover {
+        background-color: #a93226;
+    }
+
+    /* Mobile responsive */
+    @@media (max-width: 768px) {
+        .controls {
+            padding: 10px;
+        }
+
+        .control-group {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .control-group h3 {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        button {
+            flex: 1;
+            min-width: 80px;
+            font-size: 12px;
+            padding: 8px 12px;
+        }
+
+        .main-controls button {
+            width: 100%;
+            margin: 5px 0;
+        }
+    }
+
+    /* Hide controls in landscape mode */
+    .landscape-mode .controls,
+    .landscape-mode .main-controls,
+    .landscape-mode h1,
+    .landscape-mode p,
+    .landscape-mode #status {
+        display: none;
+    }
+
+    /* Exit landscape button */
+    .exit-landscape {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .landscape-mode .exit-landscape {
+        display: flex;
+    }
+</style>
 
 <h1>Phát livestream (trình duyệt điện thoại)</h1>
 <p>Cho phép truy cập camera/mic, sau đó bấm Bắt đầu.</p>
 
-<video id="preview" autoplay playsinline muted style="width:100%;max-width:420px;background:#000"></video>
-<div style="margin:12px 0">
-    <label>Độ phân giải: </label>
-    <select id="resolution">
-        <option value="1280x720">1280x720</option>
-        <option value="1920x1080">1920x1080</option>
-        <option value="640x360">640x360</option>
-    </select>
+<div id="videoContainer">
+    <video id="preview" autoplay playsinline muted></video>
+    <canvas id="overlayCanvas"></canvas>
 </div>
-<button id="btnStart">Bắt đầu livestream</button>
-<button id="btnStop" disabled>Kết thúc</button>
 
-<div id="status" style="margin-top:10px;color:#0a0"></div>
+
+<div class="controls">
+    <div class="control-group">
+        <h3>🎬 Độ phân giải:</h3>
+        <select id="resolution">
+            <option value="1280x720">1280x720 (HD)</option>
+            <option value="1920x1080">1920x1080 (FHD)</option>
+            <option value="640x360">640x360 (SD)</option>
+        </select>
+    </div>
+</div>
+
+<div class="controls">
+    <div class="control-group">
+        <h3>📊 Bảng điểm:</h3>
+        <button id="toggleScoreboard">Bật/Tắt Bảng Điểm</button>
+    </div>
+</div>
+
+<div class="controls">
+    <div class="control-group">
+        <h3>🔵 Đội Xanh:</h3>
+        <input id="increaseGreen">
+    </div>
+</div>
+
+<div class="controls">
+    <div class="control-group">
+        <h3>🟡 Điểm Cặp:</h3>
+        <button id="increasePair">Tăng (+1)</button>
+        <button id="decreasePair">Giảm (-1)</button>
+    </div>
+</div>
+
+<div class="controls">
+    <div class="control-group">
+        <h3>🔴 Đội Đỏ:</h3>
+        <input id="increaseRed">
+    </div>
+</div>
+
+<div class="main-controls">
+    <button id="btnStart">▶️ Bắt đầu livestream</button>
+    <button id="btnStop" disabled>⏹️ Kết thúc</button>
+</div>
+
+<div id="status">Sẵn sàng livestream</div>
 
 <script src="/js/whip-publisher.js"></script>
 <script>
+
     window.initWhipPublisher({
         videoElId: 'preview',
         startBtnId: 'btnStart',
         stopBtnId: 'btnStop',
         resolutionSelId: 'resolution',
         whipEndpoint: '@whip',
-        bearerToken: '@token'
+        bearerToken: '@token',
+        admin: '@admin',
+        user: '@user',
+        adminPassword: '@adminPassword',
+        userPassoword: '@userPassoword',
     });
+
 </script>

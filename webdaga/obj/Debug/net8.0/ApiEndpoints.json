@@ -1,1 +1,33 @@
-[]
+[
+  {
+    "ContainingType": "webdaga.Controllers.RecordController",
+    "Method": "GetLatestFile",
+    "RelativePath": "Record/latest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "webdaga.Controllers.RecordController",
+    "Method": "RecordComplete",
+    "RelativePath": "Record/record-complete",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "path",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "segment_path",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

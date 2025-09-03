@@ -21,11 +21,15 @@ namespace webdaga.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<UserModel> _signInManager;
+        private readonly UserManager<UserModel> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<UserModel> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<UserModel> signInManager,
+                   UserManager<UserModel> userManager,
+            ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _logger = logger;
         }
 
@@ -101,7 +105,12 @@ namespace webdaga.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
-
+        private const int MaxFailedAttempts = 5;
+        private int FailedAttempts
+        {
+            get => HttpContext.Session.GetInt32("FailedAttempts") ?? 0;
+            set => HttpContext.Session.SetInt32("FailedAttempts", value);
+        }
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
@@ -110,31 +119,51 @@ namespace webdaga.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var user = await _userManager.FindByEmailAsync(Input.Email);
+
+                if (user != null && await _userManager.IsLockedOutAsync(user))
+                {
+                    _logger.LogWarning("User account locked out.");
+                    return RedirectToPage("./Lockout");
+                }
+
+                var result = await _signInManager.PasswordSignInAsync(
+                    Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+
                 if (result.Succeeded)
                 {
+                    if (user != null)
+                        await _userManager.ResetAccessFailedCountAsync(user);
+
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
-                if (result.RequiresTwoFactor)
+                else if (result.RequiresTwoFactor)
                 {
                     return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
                 }
-                if (result.IsLockedOut)
+                else if (result.IsLockedOut)
                 {
                     _logger.LogWarning("User account locked out.");
                     return RedirectToPage("./Lockout");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    if (user != null)
+                    {
+                        int failedCount = await _userManager.GetAccessFailedCountAsync(user);
+                        int attemptsLeft = 5 - failedCount;
+                        TempData["LoginError"] = $"Email hoặc mật khẩu không đúng. Bạn còn {attemptsLeft} lần thử trước khi bị khóa.";
+                    }
+                    else
+                    {
+                        TempData["LoginError"] = "Email hoặc mật khẩu không đúng.";
+                    }
+
                     return Page();
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }

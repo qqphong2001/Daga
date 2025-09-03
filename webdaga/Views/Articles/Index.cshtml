@@ -1,0 +1,96 @@
+﻿@model IEnumerable<articlesModel>
+@{
+    ViewBag.Title = "Xem lại video";
+    int currentPage =(int) ViewBag.CurrentPage;
+    int totalPages = ViewBag.TotalPages;
+}
+
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">Video Vần xổ gà Xem Lại</h1>
+        <p class="page-description">Nơi lưu trữ các video Vần xổ gà tại CLB Gà Chọi C3 được quay trực tiếp hàng ngày 18h tại Thôn Phú Quý, Xã An Chấn, Huyện Tuy An, Tỉnh Phú Yên</p>
+        <p class="contact-info">Mua gà chiến liên hệ hotline/zalo: <a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
+    </div>
+</section>
+
+<section class="video-replay-section">
+    <div class="container">
+        <div class="video-grid">
+            @foreach (var article in Model)
+            {
+                <div class="video-card" onclick="location.href='@Url.Action("Details", "Articles", new { id = article.Id })'">
+                    <div class="video-thumbnail" style="height:242px !important">
+                        <img src="~/gachoi.jpg" width="100%" height="100%" />
+                    </div>
+                    <div class="video-info">
+                        <div class="video-category">VIDEO Vần xổ gà XEM LẠI</div>
+                        <h4 class="video-title">@article.Name</h4>
+                        <div class="video-meta">
+                            <span class="uploader">Đăng bởi Gà Chọi C3</span>
+                            <span class="upload-date">Ngày đăng @article.CreatedDate</span>
+                        </div>
+                        <a href="#" class="watch-btn">XEM NGAY →</a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Phân trang -->
+        <div class="pagination">
+            @if (currentPage > 1)
+            {
+                <a class="page-btn prev" href="@Url.Action("Index", new { page = currentPage - 1 })">‹</a>
+            }
+
+            @for (int i = 1; i <= totalPages; i++)
+            {
+                <a class="page-btn @(i == ViewBag.CurrentPage ? "active" : "")" href="@Url.Action("Index", new { page = i })">@i</a>
+            }
+
+
+            @if (currentPage < totalPages)
+            {
+                <a class="page-btn next" href="@Url.Action("Index", new { page = currentPage + 1 })">›</a>
+            }
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .pagination {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        background: #1a1a1a;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .page-btn {
+        background: transparent;
+        border: none;
+        color: #fff;
+        padding: 6px 12px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: background 0.2s;
+    }
+
+        .page-btn:hover {
+            background: #333;
+        }
+
+        .page-btn.active {
+            background: #f4b400;
+            color: #000;
+            font-weight: bold;
+        }
+
+    .prev, .next {
+        font-size: 18px;
+    }
+</style>
