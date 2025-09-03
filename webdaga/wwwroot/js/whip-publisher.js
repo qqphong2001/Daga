@@ -49,44 +49,8 @@
 
             log(`Xoay màn hình: ${angle}°`);
         }
-        function drawWarningText() {
-            if (!ctx) return;
 
-            ctx.save();
 
-            // Nếu đang ở chế độ xoay, cần điều chỉnh tọa độ
-            if (rotationAngle !== 0) {
-                const centerX = overlayCanvas.width / 2;
-                const centerY = overlayCanvas.height / 2;
-
-                // Move to center, rotate, then move back
-                ctx.translate(centerX, centerY);
-                ctx.rotate(-rotationAngle * Math.PI / 180); // Rotate opposite direction
-                ctx.translate(-centerX, -centerY);
-            }
-
-            // Thiết lập font và style cho text cảnh báo
-            const warningText = 'CẤM CÁ CƯỢC & CHỬI THỀ';
-            const fontSize = isLandscapeMode ? 24 : 32;
-            ctx.font = `bold ${fontSize}px Arial`;
-            ctx.textAlign = 'center';
-
-            // Tính toán vị trí giữa màn hình, phía trên
-            const centerX = overlayCanvas.width / 2;
-            const warningY = isLandscapeMode ? 40 : 50;
-
-            // Vẽ outline đen cho text (để text rõ hơn)
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 4;
-            ctx.strokeText(warningText, centerX, warningY);
-
-            // Vẽ text màu đỏ
-            ctx.fillStyle = '#FF0000';
-            ctx.fillText(warningText, centerX, warningY);
-
-            ctx.restore();
-        }
-        // Hàm vẽ scoreboard với tính toán xoay
         function drawScoreboard() {
             if (!showScoreboard || !ctx) return;
 
@@ -189,7 +153,7 @@
                     facingMode: "environment",
                     width: { ideal: width },
                     height: { ideal: height },
-                    frameRate: { ideal: 30 }
+                    frameRate: { ideal: 60 }
                 },
                 audio: {
                     echoCancellation: true,
@@ -290,8 +254,7 @@
                     // Restore context
                     ctx.restore();
 
-                    // Vẽ scoreboard (không bị ảnh hưởng bởi rotation của video)
-                    drawWarningText();
+                
                     drawScoreboard();
 
                 } catch (e) {
