@@ -9,7 +9,7 @@
 
 <section class="live-stream-section">
     <div class="container">
-        <h1 class="live-title">Vần xổ gà trực tiếp 18h ngày <span id="today"></span> </h1>
+        <h1 style="color:red" class="live-title">Vần xổ gà trực tiếp 18h ngày <span id="today"></span> </h1>
 
         @*<div class="stream-controls">
                 <button class="stream-btn active">HD1</button>
@@ -38,8 +38,8 @@
                                preload="metadata">
                         </video>
                         <div class="video-info">
-                            <h3 style="color:red">CLB GÀ CHỌI LIVE Vần xổ gà 18H30 HÀNG NGÀY</h3>
-                            <p class="phone-number"><a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
+                            <h3 style="color:red">CLB GÀ CHỌI LIVE Vần xổ gà 18H HÀNG NGÀY</h3>
+                            <p class="phone-number"><i class="fas fa-phone" style=" font-size: 16px; margin-right: 10px; color: #ffd700;"></i><a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
                         </div>
                     </div>
                 </div>
@@ -49,10 +49,11 @@
                     <div class="chat-input" >
                         <input type="text" id="username" class="chat-name" placeholder="Tên của bạn..." required>
                         <input type="text" id="message" class="chat-message" placeholder="Nhập nội dung chat..." required>
-                        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Gửi</button>
+                        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> <span style="color:blue">Gửi</span> </button>
                     </div>
                     <div class="chat-header" style="margin-top:20px">
-                        <h3>Live Chat</h3>
+                        <span style="color: #006400; font-weight: bold;">Live Chat</span>
+
                     </div>
                     <div class="chat-messages">
 
@@ -149,7 +150,7 @@
 <section class="replay-section">
     <div class="container">
         <h2>VIDEO XEM LẠI</h2>
-        <p class="replay-desc">Video Vần xổ gà được cập nhật hàng ngày</p>
+        <p style="color: #28a745" class="replay-desc">Video Vần xổ gà được cập nhật hàng ngày</p>
         <div class="video-grid">
 
             @foreach (var i in Model)
@@ -177,7 +178,7 @@
 <section class="about-section">
     <div class="container">
         <div class="about-header">
-            <h2>CLB GÀ CHỌI</h2>
+            <h2 style="color:red">CLB GÀ CHỌI</h2>
         </div>
 
         <div class="about-content">
@@ -188,13 +189,15 @@
 
             <div class="about-images">
                 <div class="image-collage">
+                    <div class="small-image">
+                        <img src="~/thums.jpg" height="100%" width="100%"/>
+                    </div>
+                    @*<div class="small-image"></div>
                     <div class="small-image"></div>
-                    <div class="small-image"></div>
-                    <div class="small-image"></div>
-                    <div class="small-image"></div>
+                    <div class="small-image"></div>*@
                 </div>
                 <div class="main-image">
-                    <h3>CLB Gà Chọi C3 LIVE Vần xổ gà 18H30 HÀNG NGÀY</h3>
+                    <h3 style="color:red">CLB Gà Chọi C3 LIVE Vần xổ gà 18H HÀNG NGÀY</h3>
                 </div>
             </div>
         </div>

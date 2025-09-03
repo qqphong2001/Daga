@@ -161,6 +161,20 @@
             return message.replace(/@@(\w+)/g, '<span class="mention">@@$1</span>');
         }
         document.getElementById("today").textContent = formatDate(new Date());
+
+        const colors = ["#FF0000", "#28a745", "#FFD700", "#007BFF", "#800080"]; // Đỏ, xanh lá, vàng, xanh nước biển, tím
+        const userColors = new Map();
+        let colorIndex = 0;
+
+
+        function getUserColor(username) {
+            if (!userColors.has(username)) {
+                userColors.set(username, colors[colorIndex]);
+                colorIndex = (colorIndex + 1) % colors.length; // quay vòng
+            }
+            return userColors.get(username);
+        }
+
         function addMessage(username, message, timestamp = new Date()) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message';
@@ -176,10 +190,12 @@
             const isoTime = new Date(timestamp).toISOString();
             const highlightedMessage = highlightMentions(message);
 
+            const userColor = getUserColor(username);
+
             messageDiv.innerHTML = `
                                     <div style="display:flex;justify-content:space-between;align-items:center">
                                         <div style="overflow-wrap: break-word;white-space: normal;width: 60%;">
-                                            <span class="username" onclick="mentionUser('${username}')">${username}:</span>
+                                            <span  style="color:${userColor}; font-weight:bold;" class="username" onclick="mentionUser('${username}')">${username}:</span>
                                             <span class="message-text">${highlightedMessage}</span>
                                         </div>
                                         <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 70px !important;font-size: 12px;">

@@ -84,6 +84,7 @@ wwwroot\favicon.ico
 wwwroot\gachoi.jpg
 wwwroot\Icon_of_Zalo.svg.webp
 wwwroot\js\hls-player.js
+wwwroot\js\script.js
 wwwroot\js\site.js
 wwwroot\js\whip-publisher.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -159,4 +160,4 @@ wwwroot\recordings\mystream\2025-09-02_18-03-47-188928.mp4
 wwwroot\recordings\mystream\2025-09-02_20-40-46-880217.mp4
 wwwroot\recordings\mystream\2025-09-02_23-51-31-586983.mp4
 wwwroot\thumbnail-logo-vietcombank.jpg
-wwwroot\js\script.js
+wwwroot\thums.jpg

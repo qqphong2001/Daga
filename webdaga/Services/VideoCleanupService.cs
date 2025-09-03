@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using webdaga.DbContext;
+﻿using webdaga.DbContext;
 
 namespace webdaga.Services
 {
@@ -7,8 +6,8 @@ namespace webdaga.Services
     {
         private readonly ILogger<VideoCleanupService> _logger;
         private readonly string _videoDirectory = "/var/www/XoGa/wwwroot/recordings/mystream";
-        private readonly TimeSpan _maxVideoAge = TimeSpan.FromHours(36);
-        private readonly TimeSpan _checkInterval = TimeSpan.FromHours(1); 
+        private readonly TimeSpan _maxVideoAge = TimeSpan.FromHours(48);
+        private readonly TimeSpan _checkInterval = TimeSpan.FromHours(1);
         private readonly IServiceScopeFactory _scopeFactory;
         public VideoCleanupService(ILogger<VideoCleanupService> logger, IServiceScopeFactory scopeFactory)
         {
@@ -84,7 +83,7 @@ namespace webdaga.Services
 
                             File.Delete(filePath);
 
-                            var articles = _context.Articles.ToList(); 
+                            var articles = _context.Articles.ToList();
 
                             var article = articles
                                 .FirstOrDefault(a => Path.GetFileName(a.VideoUrl) == fileInfo.Name);
