@@ -10,7 +10,7 @@ body {
     background-color: #1a1a1a;
     color: #ffffff;
     line-height: 1.6;
-    padding-top: 100px;
+
 }
 
 .container {
@@ -23,7 +23,6 @@ body {
 .header {
     background: #f8f1a1; /* Màu vàng nhạt */
     box-shadow: 0 4px 16px 0 #000a;
-    position: fixed; /* Giữ cố định */
     top: 0;
     left: 0;
     width: 100%;
@@ -257,8 +256,8 @@ body {
 
 .viewer-count {
     position: absolute;
-    top: 215px;
-    right: 820px;
+    top: 250px;
+    right: 760px;
     background: rgba(0,0,0,0.8);
     color: #fff;
     font-size: 12px;
@@ -280,14 +279,13 @@ body {
 
 .video-info {
     text-align: center;
-    padding: 15px;
     background: #1e1e1e;
     border-top: 1px solid #333;
 }
 
     .video-info h3 {
         font-size: 16px;
-        margin-bottom: 8px;
+    
         color: #fff;
         font-weight: normal;
     }
@@ -872,9 +870,6 @@ body {
     cursor: pointer;
 }
 
-.video-info {
-    padding: 15px;
-}
 
     .video-info h4 {
         font-size: 14px;
@@ -1611,7 +1606,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('~/gachoi.jpg');
+
     background-size: cover;
     background-position: center;
     display: flex;

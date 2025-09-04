@@ -21,9 +21,10 @@
 
         <div class="stream-container" style=" padding-bottom: 0;">
             <div class="stream-left">
-                <div class="video-player">
-                        <div class="viewer-count"><i class="fas fa-eye"></i> <span id="viewerCount"></spanid="viewerCount"></div>
-                        <div class="video-container">
+                <div class="video-player" style="display:flex;flex-direction:column">
+                    <div class="viewer-count"><i class="fas fa-eye"></i> <span id="viewerCount"></span></div>
+                    <div class="video-container">
+                        <div style="position:relative">
                             <div class="thumbnail-overlay" id="thumbnailOverlay">
                                 <div class="play-button" onclick="startStream()">
                                     <div class="play-icon"></div>
@@ -34,7 +35,7 @@
 
                             <div class="live-badge">LIVE</div>
 
-                            <video style="height: 750px !important; width: 100%; object-fit: contain; background: black; "
+                            <video style="height: 505px !important; width: 100%; object-fit: contain; background: black; "
                                    id="player"
                                    controls
                                    playsinline
@@ -43,17 +44,21 @@
                                    x5-video-player-type="h5"
                                    x5-video-player-fullscreen="false"
                                    preload="metadata"
-                                   poster="~/gachoi.jpg">
+                                   poster="~/thum-gachoic3.png">
                             </video>
-                            <div class="video-info">
-                                <h3 style="color:red">CLB GÀ CHỌI LIVE Vần xổ gà 18H HÀNG NGÀY</h3>
-                                <p class="phone-number"><i class="fas fa-phone" style=" font-size: 16px; margin-right: 10px; color: #ffd700;"></i><a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
-                            </div>
                         </div>
+
+
+                    </div>
+                    <div class="video-info">
+                        <h3 style="color:red">CLB GÀ CHỌI LIVE Vần xổ gà 18H HÀNG NGÀY</h3>
+                        <p class="phone-number"><i class="fas fa-phone" style=" font-size: 16px; margin-right: 10px; color: #ffd700;"></i><a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
+                    </div>
                 </div>
+
             </div>
             <div class="stream-right">
-                <div class="live-chat chat-container">
+                <div class="live-chat chat-container" style="position:relative">
                     <div class="chat-input">
                         <input type="text" id="username" class="chat-name" placeholder="Tên của bạn..." required>
                         <input type="text" id="message" class="chat-message" placeholder="Nhập nội dung chat..." required>
@@ -63,11 +68,18 @@
                         <span style="color: #006400; font-weight: bold;">Live Chat</span>
 
                     </div>
-                    <div class="chat-messages">
-
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="load-more-indicator" id="loadMoreIndicator">
+                            <i class="fas fa-spinner fa-spin"></i> Đang tải tin nhắn cũ...
+                        </div>
                     </div>
+
+                    <button class="back-to-top" style="transform: scale(1); position: absolute; width: 40px; height: 40px; bottom: 39px; right: 21px; border-radius: 50%;" id="backToTop1" onclick="scrollToTop()">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+
                     <div style="display:flex;justify-content:center;text-align:center">
-                        <p style="color:red"><img draggable="false" role="img" style="display: inline !important; border: none !important; box-shadow: none !important; height: 1em !important; width: 1em !important; margin: 0 0.07em !important; vertical-align: -0.1em !important; background: none !important; padding: 0 !important;"  alt="⛔" src="https://s.w.org/images/core/emoji/16.0.1/svg/26d4.svg"/> CẤM CÁ CƯỢC CHỬI THỀ</p>
+                        <p style="color:red"><img draggable="false" role="img" style="display: inline !important; border: none !important; box-shadow: none !important; height: 1em !important; width: 1em !important; margin: 0 0.07em !important; vertical-align: -0.1em !important; background: none !important; padding: 0 !important;" alt="⛔" src="https://s.w.org/images/core/emoji/16.0.1/svg/26d4.svg" /> CẤM CÁ CƯỢC CHỬI THỀ</p>
                     </div>
                 </div>
             </div>
@@ -166,7 +178,7 @@
             @foreach (var i in Model)
             {
                 <div class="video-card" style="cursor:pointer;" onclick="window.location='@Url.Action("Details", "Articles", new { id = i.Id })'">
-                    <div class="video-thumbnail" style="background-image: url('\gachoi.jpg'); background-size: cover; background-position: center;">
+                    <div class="video-thumbnail" style="background-image: url('\thum-gachoic3.png'); background-size: cover; background-position: center;">
                         <div class="play-overlay">
                             <i class="fas fa-play"></i>
                         </div>
@@ -200,11 +212,11 @@
             <div class="about-images">
                 <div class="image-collage">
                     <div class="small-image">
-                        <img src="~/thums.jpg" height="100%" width="100%"/>
+                        <img src="~/thums.jpg" height="100%" width="100%" />
                     </div>
                     @*<div class="small-image"></div>
-                    <div class="small-image"></div>
-                    <div class="small-image"></div>*@
+                        <div class="small-image"></div>
+                        <div class="small-image"></div>*@
                 </div>
                 <div class="main-image">
                     <h3 style="color:red">CLB Gà Chọi C3 LIVE Vần xổ gà 18H HÀNG NGÀY</h3>
@@ -213,11 +225,11 @@
         </div>
     </div>
 </section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 
 <script>
 
     let isStreamStarted = false;
-
     async function startStream() {
         if (isStreamStarted) return;
 
@@ -294,5 +306,329 @@
         });
     }
 
-   
+
+</script>
+
+
+<script>
+    const chatMessages = document.getElementById('chatMessages');
+    const loadMoreIndicator = document.getElementById('loadMoreIndicator');
+    const backToTopBtn = document.getElementById('backToTop1');
+
+    // Cấu hình phân trang
+    const PAGE_SIZE = 50;
+    let currentPage = 1;
+    let isLoading = false;
+    let hasMoreMessages = true;
+    let shouldScrollToTop = true;
+
+    // Maps và arrays để quản lý dữ liệu
+    const colors = ["#FF0000", "#28a745", "#FFD700", "#007BFF", "#800080"];
+    const userColors = new Map();
+    let colorIndex = 0;
+    let messagesCache = [];
+
+    // Utility functions
+    function formatDate(date) {
+        let day = String(date.getDate()).padStart(2, '0');
+        let month = String(date.getMonth() + 1).padStart(2, '0');
+        let year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+    function timeAgo(date) {
+        const seconds = Math.floor((new Date() - date) / 1000);
+        if (seconds < 60) return `${seconds} giây trước`;
+        const minutes = Math.floor(seconds / 60);
+        if (minutes < 60) return `${minutes} phút trước`;
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) return `${hours} giờ trước`;
+        const days = Math.floor(hours / 24);
+        return `${days} ngày trước`;
+    }
+
+    function getUserColor(username) {
+        if (!userColors.has(username)) {
+            userColors.set(username, colors[colorIndex]);
+            colorIndex = (colorIndex + 1) % colors.length;
+        }
+        return userColors.get(username);
+    }
+
+    function isUserMentioned(message, currentUsername) {
+        if (!currentUsername) return false;
+        const mentionPattern = new RegExp(`@@${currentUsername}\\b`, 'i');
+        return mentionPattern.test(message);
+    }
+
+    function highlightMentions(message) {
+        return message.replace(/@@(\w+)/g, '<span class="mention">@@$1</span>');
+    }
+
+    function mentionUser(username) {
+        const messageInput = document.getElementById("message");
+        const currentValue = messageInput.value;
+        if (currentValue && !currentValue.endsWith(' ')) {
+            messageInput.value = currentValue + ' @@' + username + ' ';
+        } else {
+            messageInput.value = currentValue + '@@' + username + ' ';
+        }
+        messageInput.focus();
+    }
+
+    // Tạo element tin nhắn
+    function createMessageElement(username, message, timestamp = new Date()) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message';
+
+        const currentUser = document.getElementById("username").value;
+        const mentioned = isUserMentioned(message, currentUser);
+
+        if (mentioned) {
+            messageDiv.classList.add('mentioned-message');
+        }
+
+        const timeLabel = timeAgo(new Date(timestamp));
+        const isoTime = new Date(timestamp).toISOString();
+        const highlightedMessage = highlightMentions(message);
+        const userColor = getUserColor(username);
+
+        messageDiv.innerHTML = `
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div style="overflow-wrap: break-word;white-space: normal;width: 60%;">
+                        <span style="color:${userColor}; font-weight:bold;" class="username" onclick="mentionUser('${username}')">${username}:</span>
+                        <span class="message-text">${highlightedMessage}</span>
+                    </div>
+                    <span class="message-time" data-timestamp="${isoTime}" style="color: #C0C0C0; width: 75px !important;font-size: 12px;">
+                        ${timeLabel}
+                    </span>
+                </div>
+            `;
+
+        return messageDiv;
+    }
+
+    // Thêm tin nhắn mới (tin nhắn real-time)
+    function addMessage(username, message, timestamp = new Date()) {
+        const messageElement = createMessageElement(username, message, timestamp);
+
+        // Thêm vào cache
+        messagesCache.unshift({ // Thêm vào đầu cache
+            username: username,
+            message: message,
+            timestamp: timestamp
+        });
+
+        // Thêm vào đầu container (sau load-more indicator nếu có)
+        const firstMessage = chatMessages.querySelector('.message');
+        if (firstMessage) {
+            chatMessages.insertBefore(messageElement, firstMessage);
+        } else {
+            // Nếu chưa có tin nhắn nào, thêm vào cuối (trước load-more indicator)
+            if (loadMoreIndicator.parentNode === chatMessages) {
+                chatMessages.insertBefore(messageElement, loadMoreIndicator);
+            } else {
+                chatMessages.appendChild(messageElement);
+            }
+        }
+
+        // Scroll lên đầu nếu user đang ở gần đầu
+        if (shouldScrollToTop) {
+            scrollToTop();
+        } else {
+            showBackToTopButton();
+        }
+
+        // Giới hạn số tin nhắn trong DOM
+        const allMessages = chatMessages.querySelectorAll('.message');
+        if (allMessages.length > PAGE_SIZE * 2) {
+            // Xóa tin nhắn cũ nhất (từ cuối lên)
+            for (let i = allMessages.length - 1; i >= PAGE_SIZE * 2; i--) {
+                if (allMessages[i] && !allMessages[i].classList.contains('load-more-indicator')) {
+                    allMessages[i].remove();
+                }
+            }
+        }
+    }
+    // Load tin nhắn cũ (thêm vào cuối) - SỬA ĐỂ KHÔNG BỊ SCROLL XUỐNG CUỐI
+    function appendMessages(messages) {
+        if (messages.length === 0) return;
+
+        const fragment = document.createDocumentFragment();
+        console.log(messages)
+        messages.forEach(msg => {
+            const messageElement = createMessageElement(msg.user, msg.message, new Date(msg.timestamp));
+            fragment.appendChild(messageElement);
+        });
+
+        // Tìm tin nhắn đầu tiên hiện đang visible làm anchor point
+        const allMessages = chatMessages.querySelectorAll('.message');
+        let anchorElement = null;
+        let anchorScrollOffset = 0;
+
+        if (allMessages.length > 0) {
+            // Lấy tin nhắn đầu tiên làm anchor
+            anchorElement = allMessages[0];
+            anchorScrollOffset = anchorElement.offsetTop - chatMessages.scrollTop;
+        }
+
+        // Thêm tin nhắn mới vào cuối (trước load-more indicator)
+        if (loadMoreIndicator.parentNode === chatMessages) {
+            chatMessages.insertBefore(fragment, loadMoreIndicator);
+        } else {
+            chatMessages.appendChild(fragment);
+        }
+
+        // Điều chỉnh scroll để anchor element vẫn ở vị trí cũ
+        if (anchorElement) {
+            const newScrollTop = anchorElement.offsetTop - anchorScrollOffset;
+            chatMessages.scrollTop = newScrollTop;
+        }
+    }
+
+
+    // Load tin nhắn từ server - SỬA PHẦN LOAD LẦN ĐẦU
+    async function loadMessages(page = 1) {
+        if (isLoading || !hasMoreMessages) return;
+
+        isLoading = true;
+        loadMoreIndicator.classList.add('loading');
+
+        try {
+            const response = await fetch(`/api/Chat/messages?page=${page}&size=${PAGE_SIZE}`);
+            const data = await response.json();
+
+            if (data.messages && data.messages.length > 0) {
+                if (page === 1) {
+                    // Load lần đầu - clear và add
+                    chatMessages.innerHTML = '';
+
+                    // Thêm tin nhắn theo thứ tự mới nhất lên đầu
+                    data.messages.forEach(msg => {
+                        console.log(msg.user)
+                        const messageElement = createMessageElement(msg.user, msg.message, new Date(msg.timestamp));
+                        chatMessages.appendChild(messageElement);
+                    });
+
+                    // Thêm load-more indicator vào cuối
+                    chatMessages.appendChild(loadMoreIndicator);
+
+                    // CHỈ scroll lên đầu ở lần load đầu tiên
+                    setTimeout(() => {
+                        scrollToTop();
+                    }, 10);
+                } else {
+                    // Load thêm - append vào cuối và giữ nguyên vị trí scroll
+                    appendMessages(data.messages);
+                }
+
+                hasMoreMessages = data.hasMore;
+                if (!hasMoreMessages) {
+                    loadMoreIndicator.style.display = 'none';
+                }
+            } else {
+                hasMoreMessages = false;
+                loadMoreIndicator.style.display = 'none';
+            }
+        } catch (error) {
+            console.error('Error loading messages:', error);
+        } finally {
+            isLoading = false;
+            loadMoreIndicator.classList.remove('loading');
+        }
+    }
+
+    // Scroll handling - CHỈNH SỬA ĐỂ TRÁNH LOAD LIÊN TỤC
+    function handleScroll() {
+        const { scrollTop, scrollHeight, clientHeight } = chatMessages;
+
+        // Kiểm tra nếu user scroll gần cuối thì load thêm tin nhắn cũ
+        // Giảm threshold và thêm check để tránh load liên tục
+        const distanceFromBottom = scrollHeight - scrollTop - clientHeight;
+
+        if (distanceFromBottom < 20 && hasMoreMessages && !isLoading) {
+            currentPage++;
+            loadMessages(currentPage);
+        }
+
+        // Kiểm tra nếu user ở gần đầu
+        shouldScrollToTop = scrollTop < 100;
+
+        if (shouldScrollToTop) {
+            hideBackToTopButton();
+        } else {
+            showBackToTopButton();
+        }
+    }
+
+
+
+    // Scroll functions - CHỈNH SỬA
+    function scrollToTop() {
+        chatMessages.scrollTop = 0;
+        shouldScrollToTop = true;
+        hideBackToTopButton();
+    }
+
+    function showBackToTopButton() {
+        backToTopBtn.style.display = 'block';
+    }
+
+    function hideBackToTopButton() {
+        backToTopBtn.style.display = 'none';
+    }
+
+    // SignalR connection (giữ nguyên)
+    window.connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
+
+    window.connection.on("LiveStarted", async () => {
+        window.location.href = window.location.href;
+    });
+
+    window.connection.on("UpdateViewerCount", function (count) {
+        document.getElementById("viewerCount").innerText = `${count}`;
+    });
+
+    window.connection.on("ReceiveMessage", (user, message, timestamp) => {
+        const time = timestamp ? new Date(timestamp) : new Date();
+        addMessage(user, message, time);
+    });
+
+    // Send message function (giữ nguyên)
+    function sendMessage() {
+        const user = document.getElementById("username").value;
+        const message = document.getElementById("message").value;
+        if (user && message) {
+            connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
+            document.getElementById("message").value = "";
+        }
+    }
+
+    // Event listeners
+    chatMessages.addEventListener('scroll', handleScroll);
+
+    // Enter key để gửi tin nhắn
+    document.getElementById("message").addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    // Update time labels
+    setInterval(() => {
+        const timeSpans = document.querySelectorAll(".message-time");
+        timeSpans.forEach(span => {
+            const timestamp = span.getAttribute("data-timestamp");
+            if (timestamp) {
+                const time = new Date(timestamp);
+                span.textContent = timeAgo(time);
+            }
+        });
+    }, 30000);
+
+    // Initialize
+    window.connection.start().then(() => {
+        console.log("SignalR Connection Started");
+        loadMessages(1); // Load tin nhắn ban đầu
+    }).catch(err => console.error(err.toString()));
 </script>
