@@ -79,7 +79,6 @@ wwwroot\admin\widgets\cards.html
 wwwroot\admin\widgets\info-box.html
 wwwroot\admin\widgets\small-box.html
 wwwroot\css\site.css
-wwwroot\css\style.css
 wwwroot\favicon.ico
 wwwroot\gachoi.jpg
 wwwroot\Icon_of_Zalo.svg.webp
@@ -159,5 +158,15 @@ wwwroot\recordings\mystream\2025-09-02_17-12-38-566852.mp4
 wwwroot\recordings\mystream\2025-09-02_18-03-47-188928.mp4
 wwwroot\recordings\mystream\2025-09-02_20-40-46-880217.mp4
 wwwroot\recordings\mystream\2025-09-02_23-51-31-586983.mp4
+wwwroot\recordings\mystream\2025-09-03_21-04-28-827624.mp4
+wwwroot\recordings\mystream\2025-09-03_21-06-15-189042.mp4
+wwwroot\recordings\mystream\2025-09-03_21-07-50-487161.mp4
+wwwroot\recordings\mystream\2025-09-03_21-08-46-722349.mp4
+wwwroot\recordings\mystream\2025-09-03_21-42-24-929667.mp4
+wwwroot\recordings\mystream\2025-09-03_21-43-06-821521.mp4
+wwwroot\recordings\mystream\2025-09-03_21-52-02-372196.mp4
+wwwroot\recordings\mystream\2025-09-03_21-55-48-774873.mp4
 wwwroot\thumbnail-logo-vietcombank.jpg
 wwwroot\thums.jpg
+wwwroot\css\style.css
+wwwroot\recordings\mystream\2025-09-03_21-57-08-092092.mp4

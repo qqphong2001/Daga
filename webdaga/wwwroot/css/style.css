@@ -399,7 +399,7 @@ body {
 }
 
 .chat-input button {
-    flex: 0 0 auto;
+    flex: 1 1 auto;
     margin-left: 0;
     margin-right: 0;
     align-self: stretch;
@@ -1465,8 +1465,8 @@ body {
 
 .chat-container {
     display: flex;
-/*    flex-direction: column;*/
-    height: 500px; 
+    /*    flex-direction: column;*/
+    height: 650px;
     border: 1px solid #333;
 }
 
@@ -1603,4 +1603,54 @@ body {
             background-color: #c9ac4d;
             color: black;
         }
+}
+
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('~/gachoi.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+    .thumbnail-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+        display:none;
+    }
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+    .play-button:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.1);
+    }
+
+.play-icon {
+    width: 0;
+    height: 0;
+    border-left: 25px solid #333;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    margin-left: 5px;
 }

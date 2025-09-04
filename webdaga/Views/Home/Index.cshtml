@@ -7,6 +7,7 @@
 
 }
 
+
 <section class="live-stream-section">
     <div class="container">
         <h1 style="color:red" class="live-title">Vần xổ gà trực tiếp 18h ngày <span id="today"></span> </h1>
@@ -18,35 +19,42 @@
                 <button class="stream-btn">HD4</button>
             </div>*@
 
-        <div class="stream-container">
+        <div class="stream-container" style=" padding-bottom: 0;">
             <div class="stream-left">
                 <div class="video-player">
                         <div class="viewer-count"><i class="fas fa-eye"></i> <span id="viewerCount"></spanid="viewerCount"></div>
-                    <div class="video-container">
-                        <div class="live-badge">LIVE</div>
-                     
-                        <video style="height: 750px !important; width: 100%; object-fit: contain; background: black; "
-                               id="player"
-                               controls
-                               autoplay
-                               muted
-                               playsinline
-                               webkit-playsinline="true"
-                               x5-playsinline="true"
-                               x5-video-player-type="h5"
-                               x5-video-player-fullscreen="false"
-                               preload="metadata">
-                        </video>
-                        <div class="video-info">
-                            <h3 style="color:red">CLB GÀ CHỌI LIVE Vần xổ gà 18H HÀNG NGÀY</h3>
-                            <p class="phone-number"><i class="fas fa-phone" style=" font-size: 16px; margin-right: 10px; color: #ffd700;"></i><a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
+                        <div class="video-container">
+                            <div class="thumbnail-overlay" id="thumbnailOverlay">
+                                <div class="play-button" onclick="startStream()">
+                                    <div class="play-icon"></div>
+                                </div>
+                            </div>
+
+                            <div class="loading-spinner" id="loadingSpinner"></div>
+
+                            <div class="live-badge">LIVE</div>
+
+                            <video style="height: 750px !important; width: 100%; object-fit: contain; background: black; "
+                                   id="player"
+                                   controls
+                                   playsinline
+                                   webkit-playsinline="true"
+                                   x5-playsinline="true"
+                                   x5-video-player-type="h5"
+                                   x5-video-player-fullscreen="false"
+                                   preload="metadata"
+                                   poster="~/gachoi.jpg">
+                            </video>
+                            <div class="video-info">
+                                <h3 style="color:red">CLB GÀ CHỌI LIVE Vần xổ gà 18H HÀNG NGÀY</h3>
+                                <p class="phone-number"><i class="fas fa-phone" style=" font-size: 16px; margin-right: 10px; color: #ffd700;"></i><a href="tel:+84335501179" class="tel-link">033.550.1179</a></p>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="stream-right">
                 <div class="live-chat chat-container">
-                    <div class="chat-input" >
+                    <div class="chat-input">
                         <input type="text" id="username" class="chat-name" placeholder="Tên của bạn..." required>
                         <input type="text" id="message" class="chat-message" placeholder="Nhập nội dung chat..." required>
                         <button onclick="sendMessage()"><i style="color:blue" class="fas fa-paper-plane"></i> Gửi </button>
@@ -58,7 +66,9 @@
                     <div class="chat-messages">
 
                     </div>
-
+                    <div style="display:flex;justify-content:center;text-align:center">
+                        <p style="color:red"><img draggable="false" role="img" style="display: inline !important; border: none !important; box-shadow: none !important; height: 1em !important; width: 1em !important; margin: 0 0.07em !important; vertical-align: -0.1em !important; background: none !important; padding: 0 !important;"  alt="⛔" src="https://s.w.org/images/core/emoji/16.0.1/svg/26d4.svg"/> CẤM CÁ CƯỢC CHỬI THỀ</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,9 +78,6 @@
 
 <section class="contact-section">
     <div class="container">
-        <div style="display:flex;justify-content:center;text-align:center">
-            <p style="color:red">CẤM CÁ CƯỢC CHỬI THỀ</p>
-        </div>
         <div class="contact-info">
             <h2>Kết Nối Đam Mê</h2>
             <div class="contact-details">
@@ -208,8 +215,36 @@
 </section>
 
 <script>
-async function playStream() {
+
+    let isStreamStarted = false;
+
+    async function startStream() {
+        if (isStreamStarted) return;
+
+        const thumbnailOverlay = document.getElementById('thumbnailOverlay');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const liveBadge = document.getElementById('liveBadge');
+        const viewerCount = document.getElementById('viewerCount');
+
+        try {
+            thumbnailOverlay.classList.add('hidden');
+            loadingSpinner.style.display = 'block';
+
+            await playStream();
+
+            loadingSpinner.style.display = 'none';
+
+            isStreamStarted = true;
+
+        } catch (error) {
+            console.error('Lỗi khi khởi chạy stream:', error);
+            loadingSpinner.style.display = 'none';
+            thumbnailOverlay.classList.remove('hidden');
+        }
+    }
+
         const video = document.getElementById('player');
+        async function playStream() {
 
         // Ngăn video bật fullscreen
         video.addEventListener('webkitbeginfullscreen', function(e) {
@@ -259,8 +294,5 @@ async function playStream() {
         });
     }
 
-    // Khởi chạy sau khi DOM load
-    document.addEventListener('DOMContentLoaded', function() {
-        playStream();
-    });
+   
 </script>

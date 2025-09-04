@@ -13,15 +13,15 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://192.168.100.27:44361;http://192.168.100.27:53267"
+      "applicationUrl": "https://192.168.1.4:44361;http://192.168.1.4:53267"
     },
     "WSL": {
       "commandName": "WSL2",
       "launchBrowser": true,
-      "launchUrl": "https://192.168.100.27:44361",
+      "launchUrl": "https://192.168.1.4:44361",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_URLS": "https://192.168.100.27:44361;http://192.168.100.27:53267"
+        "ASPNETCORE_URLS": "https://192.168.1.4:44361;http://192.168.1.4:53267"
       },
       "distributionName": ""
     }
@@ -31,7 +31,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://192.168.100.27:53267",
+      "applicationUrl": "http://192.168.1.4:53267",
       "sslPort": 44361
     }
   }
