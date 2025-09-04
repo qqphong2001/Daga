@@ -259,6 +259,7 @@ namespace webdaga.SignalR
         // Method để ban user tạm thời
         public async Task BanUser(string username, int durationMinutes, string adminKey)
         {
+            90
             if (adminKey != "your-admin-key")
             {
                 await Clients.Caller.SendAsync("UnauthorizedAction");
