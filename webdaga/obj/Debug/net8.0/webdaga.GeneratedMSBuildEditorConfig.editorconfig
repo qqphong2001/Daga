@@ -17,141 +17,141 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = webdaga
 build_property.RootNamespace = webdaga
-build_property.ProjectDir = D:\daga\Daga\Daga\webdaga\
+build_property.ProjectDir = C:\Users\qqpho\source\repos\webdaga\webdaga\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\daga\Daga\Daga\webdaga
+build_property.MSBuildProjectDirectory = C:\Users\qqpho\source\repos\webdaga\webdaga
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Articles/Create.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Articles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcQXJ0aWNsZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Articles/Delete.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Articles/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcQXJ0aWNsZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Articles/Edit.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Articles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcQXJ0aWNsZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Articles/Index.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Articles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcQXJ0aWNsZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Home/Index.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Home/Privacy.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Shared/Error.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/_ViewImports.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/_ViewStart.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Admin/Publish.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Admin/Publish.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHVibGlzaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Articles/Details.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Articles/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Articles/Index.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Articles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Chat/Index.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Chat/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Home/Index.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Home/Privacy.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Policy/Index.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Policy/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWN5XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Shared/Error.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/_ViewImports.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Views/_ViewStart.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/daga/Daga/Daga/webdaga/Areas/admin/Views/Shared/_Layout.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Areas/admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcYWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-05k3h78t2a
 
-[D:/daga/Daga/Daga/webdaga/Views/Shared/_Layout.cshtml]
+[C:/Users/qqpho/source/repos/webdaga/webdaga/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-94weu8vbet

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("webdaga")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81f3096cf742196f51de70db0d04d84296063acb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c73311a55dfce5d62b5a791c65f2a9ec860cc4b")]
 [assembly: System.Reflection.AssemblyProductAttribute("webdaga")]
 [assembly: System.Reflection.AssemblyTitleAttribute("webdaga")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
